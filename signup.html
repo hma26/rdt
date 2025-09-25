@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join ResearchHub - Create Your Account</title>
     <link rel="stylesheet" href="signup.css">
-  
 </head>
 <body>
   <!-- Navigation -->
@@ -27,7 +26,7 @@
       <div class="welcome-panel">
         <div class="welcome-content">
           <h1>Join the Global Research Community</h1>
-          <p>Create your ResearchHub account and connect with researchers worldwide.</p>
+          <p>Create your ResearchHub account and connect with brilliant minds worldwide.</p>
           
           <ul class="welcome-features">
             <li>Share and discover cutting-edge research</li>
@@ -61,13 +60,13 @@
           <p>Join thousands of researchers advancing science together</p>
         </div>
 
-        <form class="signup-form" onsubmit="handleSignup(event)">
+        <form class="signup-form">
           <!-- Quick Signup Options -->
           <div class="quick-signup">
-            <button type="button" class="btn-institution" onclick="handleInstitutionSignup()">
+            <a href="#" class="btn-social btn-institution">
               🏫 Sign up with Institution
-            </button>
-            <button type="button" class="btn-google" onclick="handleGoogleSignup()">
+            </a>
+            <a href="#" class="btn-social">
               <svg width="18" height="18" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -75,7 +74,7 @@
                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
               Continue with Google
-            </button>
+            </a>
           </div>
 
           <div class="divider">
@@ -87,36 +86,27 @@
             <div class="form-group">
               <label for="firstName" class="form-label required">First Name</label>
               <input type="text" id="firstName" class="form-input" placeholder="Your first name" required>
-              <div class="field-error">Please enter your first name</div>
             </div>
             <div class="form-group">
               <label for="lastName" class="form-label required">Last Name</label>
               <input type="text" id="lastName" class="form-input" placeholder="Your last name" required>
-              <div class="field-error">Please enter your last name</div>
             </div>
           </div>
 
           <div class="form-group">
             <label for="email" class="form-label required">Email Address</label>
             <input type="email" id="email" class="form-input" placeholder="your.email@university.edu" required>
-            <div class="field-error">Please enter a valid email address</div>
           </div>
 
           <div class="form-group">
             <label for="password" class="form-label required">Password</label>
-            <input type="password" id="password" class="form-input" placeholder="Create a strong password" required onkeyup="checkPasswordStrength()">
-            <div class="password-strength">
-              <div class="strength-bar" id="strengthBar"></div>
-            </div>
-            <div class="strength-text" id="strengthText">Password strength: Weak</div>
-            <div class="field-error">Password must be at least 8 characters</div>
+            <input type="password" id="password" class="form-input" placeholder="Create a strong password" required>
           </div>
 
           <!-- Academic Information -->
           <div class="form-group">
             <label for="institution" class="form-label required">Institution</label>
             <input type="text" id="institution" class="form-input" placeholder="Your university or organization" required>
-            <div class="field-error">Please enter your institution</div>
           </div>
 
           <div class="form-row">
@@ -151,14 +141,16 @@
             <label for="interests" class="form-label">Research Interests</label>
             <textarea id="interests" class="form-textarea" placeholder="Describe your research areas and interests..."></textarea>
             <div class="research-tags">
-              <span class="research-tag" onclick="toggleTag(this)">Artificial Intelligence</span>
-              <span class="research-tag" onclick="toggleTag(this)">Machine Learning</span>
-              <span class="research-tag" onclick="toggleTag(this)">Cloud Computing</span>
-              <span class="research-tag" onclick="toggleTag(this)">Cybersecurity</span>
-              <span class="research-tag" onclick="toggleTag(this)">Data Science</span>
-              <span class="research-tag" onclick="toggleTag(this)">Bioinformatics</span>
-              <span class="research-tag" onclick="toggleTag(this)">Quantum Computing</span>
-              <span class="research-tag" onclick="toggleTag(this)">Robotics</span>
+              <span class="research-tag">Artificial Intelligence</span>
+              <span class="research-tag">Machine Learning</span>
+              <span class="research-tag">Cloud Computing</span>
+              <span class="research-tag">Cybersecurity</span>
+              <span class="research-tag">Data Science</span>
+              <span class="research-tag">Bioinformatics</span>
+              <span class="research-tag">Quantum Computing</span>
+              <span class="research-tag">Robotics</span>
+              <span class="research-tag">IoT</span>
+              <span class="research-tag">Blockchain</span>
             </div>
           </div>
 
@@ -178,7 +170,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-primary" id="signupBtn">
+          <button type="submit" class="btn-primary">
             🚀 Create Account
           </button>
         </form>
@@ -194,130 +186,5 @@
   <footer class="footer">
     <p>© 2025 ResearchHub — Connecting researchers worldwide</p>
   </footer>
-
-  <script>
-    function handleSignup(event) {
-      event.preventDefault();
-      
-      if (!validateForm()) {
-        return;
-      }
-
-      const signupBtn = document.getElementById('signupBtn');
-      
-      // Show loading state
-      signupBtn.classList.add('loading');
-      signupBtn.disabled = true;
-      
-      // Simulate signup process
-      setTimeout(() => {
-        alert('Account created successfully! Please check your email to verify your account.');
-        window.location.href = 'login.html';
-      }, 2000);
-    }
-
-    function handleGoogleSignup() {
-      alert('Google signup integration would be implemented here');
-    }
-
-    function handleInstitutionSignup() {
-      alert('Institutional signup would redirect to your university\'s registration system');
-    }
-
-    function validateForm() {
-      let isValid = true;
-      const requiredFields = ['firstName', 'lastName', 'email', 'password', 'institution'];
-      
-      requiredFields.forEach(fieldId => {
-        const field = document.getElementById(fieldId);
-        const error = field.parentNode.querySelector('.field-error');
-        
-        if (!field.value.trim()) {
-          field.classList.add('invalid');
-          error.classList.add('show');
-          isValid = false;
-        } else {
-          field.classList.remove('invalid');
-          field.classList.add('valid');
-          error.classList.remove('show');
-        }
-      });
-
-      // Check terms acceptance
-      const terms = document.getElementById('terms');
-      if (!terms.checked) {
-        alert('Please accept the Terms of Service to continue');
-        isValid = false;
-      }
-
-      return isValid;
-    }
-
-    function checkPasswordStrength() {
-      const password = document.getElementById('password').value;
-      const strengthBar = document.getElementById('strengthBar');
-      const strengthText = document.getElementById('strengthText');
-      
-      let strength = 0;
-      let strengthLabel = 'Weak';
-      let strengthClass = 'strength-weak';
-      
-      // Check password criteria
-      if (password.length >= 8) strength++;
-      if (password.match(/[a-z]/)) strength++;
-      if (password.match(/[A-Z]/)) strength++;
-      if (password.match(/[0-9]/)) strength++;
-      if (password.match(/[^A-Za-z0-9]/)) strength++;
-      
-      // Update strength indicator
-      if (strength >= 4) {
-        strengthLabel = 'Strong';
-        strengthClass = 'strength-strong';
-      } else if (strength >= 3) {
-        strengthLabel = 'Good';
-        strengthClass = 'strength-good';
-      } else if (strength >= 2) {
-        strengthLabel = 'Fair';
-        strengthClass = 'strength-fair';
-      }
-      
-      strengthBar.className = `strength-bar ${strengthClass}`;
-      strengthText.textContent = `Password strength: ${strengthLabel}`;
-    }
-
-    function toggleTag(tag) {
-      tag.classList.toggle('selected');
-    }
-
-    // Email validation
-    document.getElementById('email').addEventListener('input', function() {
-      const email = this.value;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const error = this.parentNode.querySelector('.field-error');
-      
-      if (email && !emailRegex.test(email)) {
-        this.classList.add('invalid');
-        this.classList.remove('valid');
-        error.textContent = 'Please enter a valid email address';
-        error.classList.add('show');
-      } else if (email) {
-        this.classList.remove('invalid');
-        this.classList.add('valid');
-        error.classList.remove('show');
-      }
-    });
-
-    // ORCID validation
-    document.getElementById('orcid').addEventListener('input', function() {
-      const orcid = this.value;
-      const orcidRegex = /^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$/;
-      
-      if (orcid && !orcidRegex.test(orcid)) {
-        this.style.borderColor = '#ef4444';
-      } else {
-        this.style.borderColor = '';
-      }
-    });
-  </script>
 </body>
 </html>
