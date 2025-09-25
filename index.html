@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ResearchHub — Home</title>
+  <link rel="stylesheet" href="styles.css">
+ 
+</head>
+<body>
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="location.href='index.html'">Research<span>Hub</span></div>
+      <div class="search">
+        <input type="search" placeholder="Search research, people, and publications...">
+      </div>
+      <nav class="nav-actions">
+        <a href="index.html">Home</a>
+        <a href="publication.html">Publications</a>
+        <a href="#">Projects</a>
+        <a href="#">Jobs</a>
+        <a href="#">Messages</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="main-grid container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+      <div class="card">
+        <h3>🔗 Quick Access</h3>
+        <ul>
+          <li><a href="#">📚 Your Publications</a></li>
+          <li><a href="#">❓ Q&A Center</a></li>
+          <li><a href="#">🔬 Active Projects</a></li>
+          <li><a href="#">📊 Analytics</a></li>
+          <li><a href="#">⭐ Saved Papers</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🌟 Communities</h3>
+        <ul>
+          <li>
+            <a href="#">☁️ Cloud Computing</a>
+            <div class="activity-indicator"></div>
+          </li>
+          <li>
+            <a href="#">🤖 AI & Machine Learning</a>
+            <div class="activity-indicator"></div>
+          </li>
+          <li>
+            <a href="#">🔒 Cybersecurity</a>
+          </li>
+          <li>
+            <a href="#">🧬 Bioinformatics</a>
+          </li>
+          <li>
+            <a href="#">⚛️ Quantum Computing</a>
+            <div class="activity-indicator"></div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Center Feed -->
+    <section class="feed">
+      <div class="feed-post card">
+        <textarea placeholder="Share a research update, ask a question, or start a discussion..."></textarea>
+        <div class="actions">
+          <button class="btn ghost">📎 Attach</button>
+          <button class="btn">📝 Post Update</button>
+        </div>
+      </div>
+
+      <!-- Publication Feed Item -->
+      <article class="card feed-item">
+        <div class="publication-badge">📄 New Publication</div>
+        <div class="feed-header">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Dr. Zike Example">
+          <div class="online-dot"></div>
+          <div>
+            <strong>Dr. Zike Example</strong>
+            <p class="meta">Published in Journal of Cloud Computing • 2 hours ago</p>
+          </div>
+        </div>
+        <div class="feed-content">
+          <h4>"Efficient Cloud Resource Management for Distributed Systems"</h4>
+          <p>We present a new scheduling algorithm that improves resource utilization by 35% in multi-cloud deployments. Our approach considers network latency, computational load, and energy efficiency to optimize task distribution across heterogeneous cloud infrastructures.</p>
+        </div>
+        <div class="feed-stats">
+          <span>👀 89 views</span>
+          <span>📈 12 citations</span>
+          <span>💾 24 saves</span>
+        </div>
+        <div class="feed-footer">
+          <button class="btn ghost">👍 Like (23)</button>
+          <button class="btn ghost">💬 Comment (8)</button>
+          <button class="btn ghost">🔄 Share</button>
+          <button class="btn ghost">📄 Read Paper</button>
+        </div>
+      </article>
+
+      <!-- Question Feed Item -->
+      <article class="card feed-item">
+        <div class="question-badge">❓ Research Question</div>
+        <div class="feed-header">
+          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=80&h=80&fit=crop&crop=face" alt="Prof. Researcher">
+          <div>
+            <strong>Prof. Sarah Chen</strong>
+            <p class="meta">Posted in AI & Machine Learning • 5 hours ago</p>
+          </div>
+        </div>
+        <div class="feed-content">
+          <h4>"How can federated learning ensure privacy across hospitals?"</h4>
+          <p>I'm researching federated learning applications in healthcare. What are the current best practices for handling sensitive patient data while maintaining model accuracy? Any recent papers on differential privacy in this context?</p>
+        </div>
+        <div class="feed-stats">
+          <span>👥 156 views</span>
+          <span>💭 12 following</span>
+        </div>
+        <div class="feed-footer">
+          <button class="btn ghost">💡 Answer (5)</button>
+          <button class="btn ghost">🔔 Follow Question</button>
+          <button class="btn ghost">🔄 Share</button>
+        </div>
+      </article>
+
+      <!-- Collaboration Feed Item -->
+      <article class="card feed-item">
+        <div class="publication-badge" style="background: #10b981;">🤝 Collaboration</div>
+        <div class="feed-header">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Dr. Kumar">
+          <div>
+            <strong>Dr. Raj Kumar</strong>
+            <p class="meta">Looking for collaborators • 1 day ago</p>
+          </div>
+        </div>
+        <div class="feed-content">
+          <h4>"Seeking ML researchers for quantum computing project"</h4>
+          <p>We're starting a new project on quantum machine learning algorithms and looking for collaborators with expertise in quantum gates and optimization. The project is funded and based at Stanford. Remote collaboration welcome.</p>
+        </div>
+        <div class="feed-stats">
+          <span>🎯 245 views</span>
+          <span>📬 18 interested</span>
+        </div>
+        <div class="feed-footer">
+          <button class="btn ghost">🙋 I'm Interested</button>
+          <button class="btn ghost">💬 Contact</button>
+          <button class="btn ghost">🔄 Share</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Right Sidebar -->
+    <aside class="sidebar-right">
+      <div class="card">
+        <h3>👨‍🔬 Suggested Researchers</h3>
+        <ul style="gap: 1rem;">
+          <li>
+            <div class="researcher-item">
+              <strong>Dr. Alex Smith</strong>
+              <span>Cybersecurity • MIT</span>
+            </div>
+          </li>
+          <li>
+            <div class="researcher-item">
+              <strong>Prof. Maria Garcia</strong>
+              <span>AI & Robotics • Stanford</span>
+            </div>
+          </li>
+          <li>
+            <div class="researcher-item">
+              <strong>Dr. Chen Wei</strong>
+              <span>Cloud Systems • Google Research</span>
+            </div>
+          </li>
+          <li>
+            <div class="researcher-item">
+              <strong>Dr. Fatima Al-Rashid</strong>
+              <span>Quantum Computing • Oxford</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🔥 Trending Topics</h3>
+        <ul>
+          <li>
+            Quantum Computing
+            <span class="trending-tag">Hot</span>
+          </li>
+          <li>
+            Federated Learning
+            <span class="trending-tag">Rising</span>
+          </li>
+          <li>
+            Blockchain Security
+            <span class="trending-tag">Popular</span>
+          </li>
+          <li>
+            Edge AI
+            <span class="trending-tag">New</span>
+          </li>
+          <li>
+            Climate Modeling
+            <span class="trending-tag">Trending</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📅 Upcoming Events</h3>
+        <ul>
+          <li>
+            <div class="researcher-item">
+              <strong>AI Conference 2025</strong>
+              <span>March 15-17 • Virtual</span>
+            </div>
+          </li>
+          <li>
+            <div class="researcher-item">
+              <strong>Quantum Computing Summit</strong>
+              <span>April 2-4 • Boston</span>
+            </div>
+          </li>
+          <li>
+            <div class="researcher-item">
+              <strong>Security Workshop</strong>
+              <span>March 28 • Online</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 ResearchHub — Connecting researchers worldwide</p>
+  </footer>
+</body>
+</html>

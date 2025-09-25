@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications - ResearchHub</title>
+  <link rel="stylesheet" href="publication.css">
+
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="location.href='index.html'">Research<span>Hub</span></div>
+      <div class="search">
+        <input type="text" placeholder="Search publications, authors, keywords...">
+      </div>
+      <div class="nav-actions">
+        <a href="index.html">Home</a>
+        <a href="publication.html" class="active">Publications</a>
+        <a href="profile.html">Profile</a>
+        <a href="#">Projects</a>
+        <a href="#">Jobs</a>
+        <a href="#">Messages</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout -->
+  <div class="container">
+    <div class="main-grid">
+
+      <!-- Left Sidebar -->
+      <div class="sidebar-left">
+        <div class="card">
+          <h3>🔍 Advanced Filters</h3>
+          
+          <div class="filter-section">
+            <div class="filter-title">Publication Type</div>
+            <div class="filter-options">
+              <div class="filter-option">
+                <input type="checkbox" id="journal" checked>
+                <label for="journal">Journal Articles</label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="conference">
+                <label for="conference">Conference Papers</label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="preprint">
+                <label for="preprint">Preprints</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-title">Year Range</div>
+            <div class="filter-options">
+              <div class="filter-option">
+                <input type="checkbox" id="2024" checked>
+                <label for="2024">2024</label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="2023" checked>
+                <label for="2023">2023</label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="2022">
+                <label for="2022">2022</label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="older">
+                <label for="older">2021 and earlier</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <div class="filter-title">Research Field</div>
+            <div class="filter-options">
+              <div class="filter-option">
+                <input type="checkbox" id="ai">
+                <label for="ai">Artificial Intelligence</label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="cloud">
+                <label for="cloud">Cloud Computing</label>
+              </div>
+              <div class="filter-option">
+                <input type="checkbox" id="security">
+                <label for="security">Cybersecurity</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Feed -->
+      <div class="feed">
+        <div class="feed-header">
+          <h1 class="feed-title">📚 Latest Publications</h1>
+          <div class="feed-controls">
+            <select class="sort-dropdown">
+              <option>Latest First</option>
+              <option>Most Cited</option>
+              <option>Most Read</option>
+              <option>Relevance</option>
+            </select>
+            <button class="btn-primary">📤 Submit Paper</button>
+          </div>
+        </div>
+
+        <div class="results-counter">Showing 2,547 publications</div>
+
+        <!-- Publication Item -->
+        <div class="feed-item card">
+          <div class="publication-badge">🏆 Featured Paper</div>
+          <div class="feed-content">
+            <h4>Deep Learning for Medical Image Analysis: Recent Advances and Future Directions</h4>
+            <div class="author-list">
+              <span class="author">Dr. Lucas Brown</span> ·
+              <span class="author">Dr. Emma Davis</span> ·
+              <span class="author">Prof. John White</span>
+            </div>
+            <p class="meta">
+              <span class="publication-type type-journal">Journal Article</span>
+              <em>IEEE Transactions on Medical Imaging</em> · March 2024 · Impact Factor: 8.4
+            </p>
+            <a href="#" class="doi">DOI: 10.1234/abcd.2024.5678</a>
+          </div>
+
+          <div class="publication-stats">
+            <div class="stat-item">
+              <span class="stat-number">256</span>
+              <span class="stat-label">Citations</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1.2k</span>
+              <span class="stat-label">Reads</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">89</span>
+              <span class="stat-label">Saves</span>
+            </div>
+          </div>
+
+          <div class="feed-footer">
+            <button class="btn ghost">📄 Read Paper</button>
+            <button class="btn ghost">📝 Cite</button>
+            <button class="btn ghost">💾 Save</button>
+            <button class="btn ghost">🔄 Share</button>
+          </div>
+        </div>
+
+        <!-- Another Publication -->
+        <div class="feed-item card">
+          <div class="publication-badge">📊 High Impact</div>
+          <div class="feed-content">
+            <h4>Cloud Computing Security: A Comprehensive Survey of Modern Threats and Defense Mechanisms</h4>
+            <div class="author-list">
+              <span class="author">Dr. Maria Garcia</span> ·
+              <span class="author">Prof. Alex Johnson</span> ·
+              <span class="author">Dr. Sarah Chen</span>
+            </div>
+            <p class="meta">
+              <span class="publication-type type-journal">Journal Article</span>
+              <em>Journal of Cloud Computing</em> · January 2024 · Impact Factor: 6.2
+            </p>
+            <a href="#" class="doi">DOI: 10.5678/jcc.2024.3344</a>
+          </div>
+
+          <div class="publication-stats">
+            <div class="stat-item">
+              <span class="stat-number">194</span>
+              <span class="stat-label">Citations</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">856</span>
+              <span class="stat-label">Reads</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">67</span>
+              <span class="stat-label">Saves</span>
+            </div>
+          </div>
+
+          <div class="feed-footer">
+            <button class="btn ghost">📄 Read Paper</button>
+            <button class="btn ghost">📝 Cite</button>
+            <button class="btn ghost">💾 Save</button>
+            <button class="btn ghost">🔄 Share</button>
+          </div>
+        </div>
+
+        <!-- Conference Paper -->
+        <div class="feed-item card">
+          <div class="publication-badge" style="background: #10b981;">🎯 Recent</div>
+          <div class="feed-content">
+            <h4>Federated Learning in Healthcare: Privacy-Preserving Machine Learning for Medical Data</h4>
+            <div class="author-list">
+              <span class="author">Dr. Raj Kumar</span> ·
+              <span class="author">Prof. Lisa Wang</span> ·
+              <span class="author">Dr. Ahmed Hassan</span>
+            </div>
+            <p class="meta">
+              <span class="publication-type type-conference">Conference Paper</span>
+              <em>International Conference on Machine Learning (ICML 2024)</em> · Vienna, Austria
+            </p>
+            <a href="#" class="doi">DOI: 10.1000/icml.2024.7890</a>
+          </div>
+
+          <div class="publication-stats">
+            <div class="stat-item">
+              <span class="stat-number">42</span>
+              <span class="stat-label">Citations</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">634</span>
+              <span class="stat-label">Reads</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">28</span>
+              <span class="stat-label">Saves</span>
+            </div>
+          </div>
+
+          <div class="feed-footer">
+            <button class="btn ghost">📄 Read Paper</button>
+            <button class="btn ghost">📝 Cite</button>
+            <button class="btn ghost">💾 Save</button>
+            <button class="btn ghost">🔄 Share</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="sidebar-right">
+        <div class="card">
+          <h3>👨‍🔬 Featured Authors</h3>
+          <ul>
+            <li><a href="#">Dr. Alice Walker<br><small>Machine Learning • Stanford</small></a></li>
+            <li><a href="#">Prof. David Kim<br><small>Cloud Computing • MIT</small></a></li>
+            <li><a href="#">Dr. Sarah Lee<br><small>Cybersecurity • Oxford</small></a></li>
+            <li><a href="#">Prof. Chen Wei<br><small>Medical AI • Harvard</small></a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>🔥 Trending Topics</h3>
+          <ul>
+            <li><a href="#">🤖 Large Language Models</a></li>
+            <li><a href="#">🏥 AI in Healthcare</a></li>
+            <li><a href="#">☁️ Edge Computing</a></li>
+            <li><a href="#">🔒 Zero-Trust Security</a></li>
+            <li><a href="#">⚛️ Quantum Machine Learning</a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>📈 Journal Rankings</h3>
+          <ul>
+            <li><a href="#">Nature • IF: 49.962</a></li>
+            <li><a href="#">Science • IF: 47.728</a></li>
+            <li><a href="#">Cell • IF: 41.582</a></li>
+            <li><a href="#">NEJM • IF: 91.245</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 ResearchHub — Discover groundbreaking research worldwide
+  </div>
+
+</body>
+</html>
