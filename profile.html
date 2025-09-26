@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ResearchHub — Profile</title>
-  
+
   <link rel="stylesheet" href="profile.css">
 
 </head>
+
 <body>
   <!-- Top Navbar -->
   <header class="navbar">
@@ -23,6 +25,7 @@
         <a href="jobs.html">Jobs</a>
         <a href="messages.html">Messages</a>
         <a href="profile.html">Profile</a>
+        <button id="logout-button" class="btn btn-logout">Logout</button>
       </nav>
     </div>
   </header>
@@ -52,7 +55,8 @@
     <aside class="sidebar-left">
       <div class="card">
         <h3>About</h3>
-        <p>I am a researcher in distributed systems and cloud computing, passionate about designing scalable and secure architectures for modern applications.</p>
+        <p>I am a researcher in distributed systems and cloud computing, passionate about designing scalable and secure
+          architectures for modern applications.</p>
       </div>
       <div class="card">
         <h3>Skills</h3>
@@ -81,7 +85,8 @@
       <article class="card feed-item">
         <h4>Efficient Cloud Resource Management for Distributed Systems</h4>
         <p class="muted">Published in Journal of Cloud Computing • March 2024 • 89 citations</p>
-        <p>This paper introduces a novel resource allocation algorithm that optimizes workload distribution across heterogeneous cloud infrastructures, resulting in 35% improved efficiency and reduced operational costs.</p>
+        <p>This paper introduces a novel resource allocation algorithm that optimizes workload distribution across
+          heterogeneous cloud infrastructures, resulting in 35% improved efficiency and reduced operational costs.</p>
         <div class="feed-footer">
           <button class="btn ghost">📄 View PDF</button>
           <button class="btn ghost">📝 Cite</button>
@@ -92,7 +97,9 @@
       <article class="card feed-item">
         <h4>A Lightweight Crypto Protocol for IoT Devices</h4>
         <p class="muted">Published in Embedded Systems Journal • January 2024 • 124 citations</p>
-        <p>We propose a compact authenticated encryption scheme for constrained devices, balancing efficiency with robust security guarantees. Our protocol reduces computational overhead by 40% while maintaining cryptographic strength.</p>
+        <p>We propose a compact authenticated encryption scheme for constrained devices, balancing efficiency with
+          robust security guarantees. Our protocol reduces computational overhead by 40% while maintaining cryptographic
+          strength.</p>
         <div class="feed-footer">
           <button class="btn ghost">📄 View PDF</button>
           <button class="btn ghost">📝 Cite</button>
@@ -103,7 +110,8 @@
       <article class="card feed-item">
         <h4>Privacy-Preserving Analytics in Edge Computing</h4>
         <p class="muted">Published in IEEE Transactions on Mobile Computing • November 2023 • 67 citations</p>
-        <p>This work presents a framework for conducting data analytics at the network edge while preserving user privacy through differential privacy and homomorphic encryption techniques.</p>
+        <p>This work presents a framework for conducting data analytics at the network edge while preserving user
+          privacy through differential privacy and homomorphic encryption techniques.</p>
         <div class="feed-footer">
           <button class="btn ghost">📄 View PDF</button>
           <button class="btn ghost">📝 Cite</button>
@@ -146,5 +154,62 @@
   <footer class="footer">
     <p>© 2025 ResearchHub — Connecting researchers worldwide</p>
   </footer>
+
+  <div id="logout-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <h3>Confirm Logout</h3>
+      <p>Are you sure you want to log out of your ResearchHub account?</p>
+      <div class="modal-actions">
+        <button id="cancel-logout" class="btn btn-secondary">Cancel</button>
+        <button id="confirm-logout" class="btn btn-danger">Log Out</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Page Protection ---
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      alert('Access denied. Please log in.');
+      window.location.href = 'login.html';
+    }
+
+    const logoutButton = document.getElementById('logout-button');
+    const logoutModal = document.getElementById('logout-modal');
+    const cancelLogoutButton = document.getElementById('cancel-logout');
+    const confirmLogoutButton = document.getElementById('confirm-logout');
+
+    logoutButton.addEventListener('click', () => {
+      logoutModal.style.display = 'flex';
+      setTimeout(() => {
+        logoutModal.style.opacity = '1';
+        logoutModal.querySelector('.modal-content').style.transform = 'scale(1)';
+      }, 10);
+    });
+
+    const hideModal = () => {
+      logoutModal.style.opacity = '0';
+      logoutModal.querySelector('.modal-content').style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        logoutModal.style.display = 'none';
+      }, 300);
+    };
+
+    cancelLogoutButton.addEventListener('click', hideModal);
+
+    confirmLogoutButton.addEventListener('click', () => {
+      localStorage.removeItem('access_token');
+
+      window.location.href = 'index.html';
+    });
+
+    logoutModal.addEventListener('click', (event) => {
+      if (event.target === logoutModal) {
+        hideModal();
+      }
+    });
+
+  </script>
 </body>
+
 </html>
