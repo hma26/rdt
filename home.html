@@ -3,24 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ResearchHub — Home</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>ResearchData — Home</title>
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/footer.css">
  
 </head>
 <body>
   <!-- Top Navbar -->
   <header class="navbar">
     <div class="nav-container">
-      <div class="logo" onclick="location.href='home.html'">Research<span>Hub</span></div>
+  <div class="logo" onclick="location.href='home.html'">Research<span>Data</span></div>
       <div class="search">
         <input type="search" placeholder="Search research, people, and publications...">
       </div>
       <nav class="nav-actions">
-        <a href="home.html">Home</a>
+        <a href="home.html" class="active">Home</a>
         <a href="publication.html">Publications</a>
-        <a href="#">Projects</a>
-        <a href="#">Jobs</a>
-        <a href="#">Messages</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="proj.html">Projects</a>
+        <a href="msg.html">Messages</a>
         <a href="profile.html">Profile</a>
       </nav>
     </div>
@@ -31,34 +33,34 @@
     <!-- Left Sidebar -->
     <aside class="sidebar-left">
       <div class="card">
-        <h3>🔗 Quick Access</h3>
+        <h3>Quick Access</h3>
         <ul>
-          <li><a href="#">📚 Your Publications</a></li>
-          <li><a href="#">❓ Q&A Center</a></li>
-          <li><a href="#">🔬 Active Projects</a></li>
-          <li><a href="#">📊 Analytics</a></li>
-          <li><a href="#">⭐ Saved Papers</a></li>
+          <li><a href="#">Your Publications</a></li>
+          <li><a href="#">Q&A Center</a></li>
+          <li><a href="#">Active Projects</a></li>
+          <li><a href="#">Analytics</a></li>
+          <li><a href="#">Saved Papers</a></li>
         </ul>
       </div>
       <div class="card">
-        <h3>🌟 Communities</h3>
+        <h3>Communities</h3>
         <ul>
           <li>
-            <a href="#">☁️ Cloud Computing</a>
+            <a href="#">Cloud Computing</a>
             <div class="activity-indicator"></div>
           </li>
           <li>
-            <a href="#">🤖 AI & Machine Learning</a>
+            <a href="#">AI & Machine Learning</a>
             <div class="activity-indicator"></div>
           </li>
           <li>
-            <a href="#">🔒 Cybersecurity</a>
+            <a href="#">Cybersecurity</a>
           </li>
           <li>
-            <a href="#">🧬 Bioinformatics</a>
+            <a href="#">Bioinformatics</a>
           </li>
           <li>
-            <a href="#">⚛️ Quantum Computing</a>
+            <a href="#">Quantum Computing</a>
             <div class="activity-indicator"></div>
           </li>
         </ul>
@@ -70,14 +72,14 @@
       <div class="feed-post card">
         <textarea placeholder="Share a research update, ask a question, or start a discussion..."></textarea>
         <div class="actions">
-          <button class="btn ghost">📎 Attach</button>
-          <button class="btn">📝 Post Update</button>
+          <button class="btn ghost">Attach</button>
+          <button class="btn">Post Update</button>
         </div>
       </div>
 
       <!-- Publication Feed Item -->
       <article class="card feed-item">
-        <div class="publication-badge">📄 New Publication</div>
+        <div class="publication-badge">New Publication</div>
         <div class="feed-header">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Dr. Zike Example">
           <div class="online-dot"></div>
@@ -91,21 +93,21 @@
           <p>We present a new scheduling algorithm that improves resource utilization by 35% in multi-cloud deployments. Our approach considers network latency, computational load, and energy efficiency to optimize task distribution across heterogeneous cloud infrastructures.</p>
         </div>
         <div class="feed-stats">
-          <span>👀 89 views</span>
-          <span>📈 12 citations</span>
-          <span>💾 24 saves</span>
+          <span>89 views</span>
+          <span>12 citations</span>
+          <span>24 saves</span>
         </div>
         <div class="feed-footer">
-          <button class="btn ghost">👍 Like (23)</button>
-          <button class="btn ghost">💬 Comment (8)</button>
-          <button class="btn ghost">🔄 Share</button>
-          <button class="btn ghost">📄 Read Paper</button>
+          <button class="btn ghost">Like (23)</button>
+          <button class="btn ghost">Comment (8)</button>
+          <button class="btn ghost">Share</button>
+          <button class="btn ghost">Read Paper</button>
         </div>
       </article>
 
       <!-- Question Feed Item -->
       <article class="card feed-item">
-        <div class="question-badge">❓ Research Question</div>
+        <div class="question-badge">Research Question</div>
         <div class="feed-header">
           <img src="https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=80&h=80&fit=crop&crop=face" alt="Prof. Researcher">
           <div>
@@ -118,19 +120,19 @@
           <p>I'm researching federated learning applications in healthcare. What are the current best practices for handling sensitive patient data while maintaining model accuracy? Any recent papers on differential privacy in this context?</p>
         </div>
         <div class="feed-stats">
-          <span>👥 156 views</span>
-          <span>💭 12 following</span>
+          <span>156 views</span>
+          <span>12 following</span>
         </div>
         <div class="feed-footer">
-          <button class="btn ghost">💡 Answer (5)</button>
-          <button class="btn ghost">🔔 Follow Question</button>
-          <button class="btn ghost">🔄 Share</button>
+          <button class="btn ghost">Answer (5)</button>
+          <button class="btn ghost">Follow Question</button>
+          <button class="btn ghost">Share</button>
         </div>
       </article>
 
       <!-- Collaboration Feed Item -->
       <article class="card feed-item">
-        <div class="publication-badge" style="background: #10b981;">🤝 Collaboration</div>
+        <div class="publication-badge" style="background: #10b981;">Collaboration</div>
         <div class="feed-header">
           <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Dr. Kumar">
           <div>
@@ -143,13 +145,13 @@
           <p>We're starting a new project on quantum machine learning algorithms and looking for collaborators with expertise in quantum gates and optimization. The project is funded and based at Stanford. Remote collaboration welcome.</p>
         </div>
         <div class="feed-stats">
-          <span>🎯 245 views</span>
-          <span>📬 18 interested</span>
+          <span>245 views</span>
+          <span>18 interested</span>
         </div>
         <div class="feed-footer">
-          <button class="btn ghost">🙋 I'm Interested</button>
-          <button class="btn ghost">💬 Contact</button>
-          <button class="btn ghost">🔄 Share</button>
+          <button class="btn ghost">I'm Interested</button>
+          <button class="btn ghost">Contact</button>
+          <button class="btn ghost">Share</button>
         </div>
       </article>
     </section>
@@ -240,7 +242,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p>© 2025 ResearchHub — Connecting researchers worldwide</p>
+    <p>© 2025 ResearchData — Connecting researchers worldwide</p>
   </footer>
 </body>
 </html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - ResearchData</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <!-- Navbar CSS (Shared across all pages) -->
+  <link rel="stylesheet" href="css/nav.css" />
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="css/proj.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="location.href='home.html'">Research<span>Data</span></div>
+      <div class="search">
+        <input type="search" placeholder="Search research, people, and publications...">
+      </div>
+
+      <nav class="nav-actions">
+        <a href="home.html">Home</a>
+        <a href="publication.html">Publications</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="proj.html" class="active">Projects</a>
+        <a href="msg.html">Messages</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="container">
+    <div class="main-grid">
+      <!-- Main Content -->
+      <div class="projects-content">
+        <div class="projects-header">
+          <h1 class="projects-title">🔬 Research Projects</h1>
+          <div class="projects-controls">
+            <select class="filter-dropdown">
+              <option>All Projects</option>
+              <option>My Projects</option>
+              <option>Collaborating</option>
+              <option>Open to Join</option>
+            </select>
+            <button class="btn-primary">+ Create Project</button>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="tab-btn active">All</button>
+          <button class="tab-btn">Active</button>
+          <button class="tab-btn">Completed</button>
+          <button class="tab-btn">Looking for Collaborators</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+          <!-- Project Card 1 -->
+          <div class="project-card card">
+            <div class="project-status status-active">Active</div>
+            <div class="project-header">
+              <h3>Quantum Machine Learning for Drug Discovery</h3>
+              <div class="project-meta">
+                <span class="meta-item">🏛️ MIT</span>
+                <span class="meta-item">⏱️ 6 months</span>
+              </div>
+            </div>
+            
+            <p class="project-description">
+              Developing quantum algorithms to accelerate molecular simulation and drug discovery processes. We're applying variational quantum eigensolvers to predict molecular properties.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Quantum Computing</span>
+              <span class="tag">ML</span>
+              <span class="tag">Biotechnology</span>
+            </div>
+
+            <div class="project-team">
+              <div class="team-avatars">
+                <div class="avatar">DR</div>
+                <div class="avatar">SK</div>
+                <div class="avatar">MC</div>
+                <div class="avatar">+5</div>
+              </div>
+              <span class="team-count">8 collaborators</span>
+            </div>
+
+            <div class="project-stats">
+              <div class="stat-group">
+                <span class="stat-icon">📄</span>
+                <span>12 papers</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">💬</span>
+                <span>45 discussions</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">📊</span>
+                <span>78% complete</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <button class="btn ghost">View Details</button>
+              <button class="btn ghost">Join Project</button>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="project-card card">
+            <div class="project-status status-recruiting">Looking for Team</div>
+            <div class="project-header">
+              <h3>Climate Change Impact on Ocean Ecosystems</h3>
+              <div class="project-meta">
+                <span class="meta-item">🏛️ Stanford</span>
+                <span class="meta-item">⏱️ 12 months</span>
+              </div>
+            </div>
+            
+            <p class="project-description">
+              Interdisciplinary project analyzing climate change effects on marine biodiversity using AI-powered data analysis. Seeking collaborators with expertise in marine biology and data science.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Climate Science</span>
+              <span class="tag">AI</span>
+              <span class="tag">Marine Biology</span>
+            </div>
+
+            <div class="project-team">
+              <div class="team-avatars">
+                <div class="avatar">SC</div>
+                <div class="avatar">JL</div>
+                <div class="avatar">?</div>
+              </div>
+              <span class="team-count">Looking for 3 more</span>
+            </div>
+
+            <div class="project-stats">
+              <div class="stat-group">
+                <span class="stat-icon">📄</span>
+                <span>5 papers</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">💬</span>
+                <span>23 discussions</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">📊</span>
+                <span>35% complete</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <button class="btn ghost">View Details</button>
+              <button class="btn primary-outline">Apply to Join</button>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="project-card card">
+            <div class="project-status status-active">Active</div>
+            <div class="project-header">
+              <h3>Federated Learning for Healthcare Privacy</h3>
+              <div class="project-meta">
+                <span class="meta-item">🏛️ Harvard Medical</span>
+                <span class="meta-item">⏱️ 9 months</span>
+              </div>
+            </div>
+            
+            <p class="project-description">
+              Building privacy-preserving machine learning systems for medical data analysis across multiple hospitals without sharing sensitive patient information.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Healthcare</span>
+              <span class="tag">Privacy</span>
+              <span class="tag">Federated Learning</span>
+            </div>
+
+            <div class="project-team">
+              <div class="team-avatars">
+                <div class="avatar">AP</div>
+                <div class="avatar">RK</div>
+                <div class="avatar">LW</div>
+                <div class="avatar">JD</div>
+                <div class="avatar">+2</div>
+              </div>
+              <span class="team-count">6 collaborators</span>
+            </div>
+
+            <div class="project-stats">
+              <div class="stat-group">
+                <span class="stat-icon">📄</span>
+                <span>8 papers</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">💬</span>
+                <span>67 discussions</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">📊</span>
+                <span>62% complete</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <button class="btn ghost">View Details</button>
+              <button class="btn ghost">Message Team</button>
+            </div>
+          </div>
+
+          <!-- Project Card 4 -->
+          <div class="project-card card">
+            <div class="project-status status-completed">Completed</div>
+            <div class="project-header">
+              <h3>Neural Network Optimization for Edge Devices</h3>
+              <div class="project-meta">
+                <span class="meta-item">🏛️ Carnegie Mellon</span>
+                <span class="meta-item">⏱️ Completed</span>
+              </div>
+            </div>
+            
+            <p class="project-description">
+              Successfully developed lightweight neural network architectures optimized for edge computing devices with limited computational resources. Results published in top-tier conferences.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Edge Computing</span>
+              <span class="tag">Neural Networks</span>
+              <span class="tag">IoT</span>
+            </div>
+
+            <div class="project-team">
+              <div class="team-avatars">
+                <div class="avatar">TK</div>
+                <div class="avatar">MG</div>
+                <div class="avatar">SB</div>
+              </div>
+              <span class="team-count">3 collaborators</span>
+            </div>
+
+            <div class="project-stats">
+              <div class="stat-group">
+                <span class="stat-icon">📄</span>
+                <span>15 papers</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">🏆</span>
+                <span>3 awards</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">📊</span>
+                <span>100% complete</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <button class="btn ghost">View Results</button>
+              <button class="btn ghost">Read Papers</button>
+            </div>
+          </div>
+
+          <!-- Project Card 5 -->
+          <div class="project-card card">
+            <div class="project-status status-recruiting">Looking for Team</div>
+            <div class="project-header">
+              <h3>Blockchain for Scientific Data Integrity</h3>
+              <div class="project-meta">
+                <span class="meta-item">🏛️ Oxford</span>
+                <span class="meta-item">⏱️ 18 months</span>
+              </div>
+            </div>
+            
+            <p class="project-description">
+              Exploring blockchain technology to ensure research data integrity and reproducibility. Building a decentralized platform for scientific data verification and sharing.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Blockchain</span>
+              <span class="tag">Data Science</span>
+              <span class="tag">Security</span>
+            </div>
+
+            <div class="project-team">
+              <div class="team-avatars">
+                <div class="avatar">EJ</div>
+                <div class="avatar">?</div>
+              </div>
+              <span class="team-count">Looking for 4 more</span>
+            </div>
+
+            <div class="project-stats">
+              <div class="stat-group">
+                <span class="stat-icon">📄</span>
+                <span>2 papers</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">💬</span>
+                <span>15 discussions</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">📊</span>
+                <span>15% complete</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <button class="btn ghost">View Details</button>
+              <button class="btn primary-outline">Apply to Join</button>
+            </div>
+          </div>
+
+          <!-- Project Card 6 -->
+          <div class="project-card card">
+            <div class="project-status status-active">Active</div>
+            <div class="project-header">
+              <h3>AI-Powered Protein Folding Prediction</h3>
+              <div class="project-meta">
+                <span class="meta-item">🏛️ DeepMind Collaboration</span>
+                <span class="meta-item">⏱️ 15 months</span>
+              </div>
+            </div>
+            
+            <p class="project-description">
+              Advancing protein structure prediction using transformer-based deep learning models. Building on AlphaFold's success to improve accuracy for novel proteins.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Bioinformatics</span>
+              <span class="tag">Protein Science</span>
+            </div>
+
+            <div class="project-team">
+              <div class="team-avatars">
+                <div class="avatar">HD</div>
+                <div class="avatar">YL</div>
+                <div class="avatar">KP</div>
+                <div class="avatar">NR</div>
+                <div class="avatar">+8</div>
+              </div>
+              <span class="team-count">12 collaborators</span>
+            </div>
+
+            <div class="project-stats">
+              <div class="stat-group">
+                <span class="stat-icon">📄</span>
+                <span>9 papers</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">💬</span>
+                <span>134 discussions</span>
+              </div>
+              <div class="stat-group">
+                <span class="stat-icon">📊</span>
+                <span>55% complete</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <button class="btn ghost">View Details</button>
+              <button class="btn ghost">Follow Progress</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 ResearchData — Discover groundbreaking research worldwide
+  </div>
+
+  <!-- JS for Toggle -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navActions = document.querySelector(".nav-actions");
+
+    hamburger.addEventListener("click", () => {
+      navActions.classList.toggle("active");
+      hamburger.classList.toggle("open");
+    });
+
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        tabs.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

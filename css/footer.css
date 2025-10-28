@@ -1,0 +1,38 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2a8e9e;
+      --primary-dark: #237a87;
+      --primary-light: #3ba3b4;
+      --accent: #4db8c7;
+      
+      --text-primary: #180D39;
+      --text-secondary: #1D1E20;
+      --text-tertiary: #6b7280;
+      --text-muted: #9ca3af;
+      
+      --bg-primary: #ffffff;
+      --bg-secondary: #E9f3f4;
+      --bg-tertiary: #f8fcfc;
+      --border: #d1e7e7;
+      --border-light: #e5f2f2;
+
+      --shadow-sm: 0 1px 3px rgba(42, 142, 158, 0.1);
+      --shadow-md: 0 4px 6px rgba(42, 142, 158, 0.1);
+      --shadow-lg: 0 10px 25px rgba(42, 142, 158, 0.15);
+    }
+
+.footer {
+      background: var(--text-secondary);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }

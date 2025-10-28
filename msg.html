@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages - ResearchData</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <!-- Navbar CSS (Shared across all pages) -->
+  <link rel="stylesheet" href="css/nav.css" />
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="css/msg.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="location.href='home.html'">Research<span>Data</span></div>
+      <div class="search">
+        <input type="search" placeholder="Search research, people, and publications...">
+      </div>
+
+      <nav class="nav-actions">
+        <a href="home.html">Home</a>
+        <a href="publication.html">Publications</a>
+        
+        <a href="jobs.html">Jobs</a>
+        <a href="proj.html">Projects</a>
+        <a href="messages.html" class="active">Messages</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages Layout -->
+  <div class="messages-container">
+    <!-- Conversations Sidebar -->
+    <aside class="conversations-sidebar">
+      <div class="sidebar-header">
+        <h2>💬 Messages</h2>
+        <button class="btn-icon" title="New Message">✏️</button>
+      </div>
+
+      <div class="search-messages">
+        <input type="search" placeholder="Search conversations...">
+      </div>
+
+      <!-- Conversation List -->
+      <div class="conversation-list">
+        <!-- Active Conversation -->
+        <div class="conversation-item active">
+          <div class="conversation-avatar">
+            <div class="avatar-circle">SC</div>
+            <div class="online-indicator"></div>
+          </div>
+          <div class="conversation-details">
+            <div class="conversation-header">
+              <h4>Dr. Sarah Chen</h4>
+              <span class="timestamp">2m ago</span>
+            </div>
+            <p class="last-message">That sounds great! When can we schedule...</p>
+          </div>
+          <div class="unread-badge">3</div>
+        </div>
+
+        <!-- Other Conversations -->
+        <div class="conversation-item">
+          <div class="conversation-avatar">
+            <div class="avatar-circle">RK</div>
+            <div class="online-indicator"></div>
+          </div>
+          <div class="conversation-details">
+            <div class="conversation-header">
+              <h4>Dr. Raj Kumar</h4>
+              <span class="timestamp">1h ago</span>
+            </div>
+            <p class="last-message">I've reviewed the latest draft. Looking good!</p>
+          </div>
+        </div>
+
+        <div class="conversation-item">
+          <div class="conversation-avatar">
+            <div class="avatar-circle group-avatar">QP</div>
+          </div>
+          <div class="conversation-details">
+            <div class="conversation-header">
+              <h4>Quantum Physics Project</h4>
+              <span class="timestamp">3h ago</span>
+            </div>
+            <p class="last-message">Emily: Can we meet tomorrow at 2pm?</p>
+          </div>
+          <div class="unread-badge">8</div>
+        </div>
+
+        <div class="conversation-item">
+          <div class="conversation-avatar">
+            <div class="avatar-circle">LW</div>
+          </div>
+          <div class="conversation-details">
+            <div class="conversation-header">
+              <h4>Prof. Lisa Wang</h4>
+              <span class="timestamp">5h ago</span>
+            </div>
+            <p class="last-message">Thanks for sharing the paper!</p>
+          </div>
+        </div>
+
+        <div class="conversation-item">
+          <div class="conversation-avatar">
+            <div class="avatar-circle">AH</div>
+          </div>
+          <div class="conversation-details">
+            <div class="conversation-header">
+              <h4>Dr. Ahmed Hassan</h4>
+              <span class="timestamp">Yesterday</span>
+            </div>
+            <p class="last-message">I'll send you the dataset by end of week</p>
+          </div>
+        </div>
+
+        <div class="conversation-item">
+          <div class="conversation-avatar">
+            <div class="avatar-circle group-avatar">ML</div>
+          </div>
+          <div class="conversation-details">
+            <div class="conversation-header">
+              <h4>ML Research Group</h4>
+              <span class="timestamp">2 days ago</span>
+            </div>
+            <p class="last-message">John: The conference deadline is approaching</p>
+          </div>
+          <div class="unread-badge">2</div>
+        </div>
+
+        <div class="conversation-item">
+          <div class="conversation-avatar">
+            <div class="avatar-circle">JK</div>
+          </div>
+          <div class="conversation-details">
+            <div class="conversation-header">
+              <h4>Dr. James Kim</h4>
+              <span class="timestamp">3 days ago</span>
+            </div>
+            <p class="last-message">Congratulations on the publication!</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Chat Area -->
+    <main class="chat-area">
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="chat-user-info">
+          <div class="avatar-circle-large">SC</div>
+          <div>
+            <h3>Dr. Sarah Chen</h3>
+            <p class="user-status">Active now</p>
+          </div>
+        </div>
+        <div class="chat-actions">
+          <button class="btn-icon" title="Call">📞</button>
+          <button class="btn-icon" title="Video Call">📹</button>
+          <button class="btn-icon" title="Info">ℹ️</button>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="messages-content">
+        <div class="date-divider">
+          <span>Today</span>
+        </div>
+
+        <!-- Received Message -->
+        <div class="message received">
+          <div class="message-avatar">SC</div>
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>Hi! I saw your recent publication on federated learning. Really impressive work!</p>
+            </div>
+            <span class="message-time">10:30 AM</span>
+          </div>
+        </div>
+
+        <div class="message received">
+          <div class="message-avatar">SC</div>
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>Would you be interested in collaborating on a related project? We're working on privacy-preserving techniques for healthcare data.</p>
+            </div>
+            <span class="message-time">10:31 AM</span>
+          </div>
+        </div>
+
+        <!-- Sent Message -->
+        <div class="message sent">
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>Thank you! I'd love to learn more about your project.</p>
+            </div>
+            <span class="message-time">10:35 AM</span>
+          </div>
+        </div>
+
+        <div class="message sent">
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>Healthcare privacy is a fascinating area. What specific challenges are you tackling?</p>
+            </div>
+            <span class="message-time">10:36 AM</span>
+          </div>
+        </div>
+
+        <!-- Received Message with attachment -->
+        <div class="message received">
+          <div class="message-avatar">SC</div>
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>Great! Let me share our project proposal with you.</p>
+              <div class="message-attachment">
+                <div class="attachment-icon">📄</div>
+                <div class="attachment-info">
+                  <span class="attachment-name">Healthcare_Privacy_Proposal.pdf</span>
+                  <span class="attachment-size">2.4 MB</span>
+                </div>
+                <button class="attachment-download">⬇️</button>
+              </div>
+            </div>
+            <span class="message-time">10:40 AM</span>
+          </div>
+        </div>
+
+        <div class="message received">
+          <div class="message-avatar">SC</div>
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>We're specifically looking at cross-institutional learning while maintaining HIPAA compliance. The main challenge is balancing data utility with privacy guarantees.</p>
+            </div>
+            <span class="message-time">10:41 AM</span>
+          </div>
+        </div>
+
+        <div class="message sent">
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>That sounds great! When can we schedule a call to discuss this further?</p>
+            </div>
+            <span class="message-time">10:45 AM</span>
+          </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="message received">
+          <div class="message-avatar">SC</div>
+          <div class="message-content">
+            <div class="typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Input -->
+      <div class="message-input-container">
+        <button class="btn-icon" title="Attach File">📎</button>
+        <button class="btn-icon" title="Emoji">😊</button>
+        <input type="text" class="message-input" placeholder="Type your message...">
+        <button class="btn-send">Send</button>
+      </div>
+    </main>
+
+    <!-- Info Sidebar (Optional - can be toggled) -->
+    <aside class="info-sidebar">
+      <div class="info-header">
+        <h3>Conversation Info</h3>
+        <button class="btn-icon close-info">✕</button>
+      </div>
+
+      <div class="info-section">
+        <div class="info-profile">
+          <div class="avatar-circle-xlarge">SC</div>
+          <h3>Dr. Sarah Chen</h3>
+          <p class="info-title">Machine Learning Researcher</p>
+          <p class="info-institution">MIT | Cambridge, MA</p>
+        </div>
+
+        <div class="info-actions">
+          <button class="btn-info">View Profile</button>
+          <button class="btn-info">Mute Conversation</button>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h4>Shared Files</h4>
+        <div class="shared-files">
+          <div class="file-item">
+            <span class="file-icon">📄</span>
+            <span class="file-name">Healthcare_Privacy_Proposal.pdf</span>
+          </div>
+          <div class="file-item">
+            <span class="file-icon">📊</span>
+            <span class="file-name">Research_Data_Analysis.xlsx</span>
+          </div>
+          <div class="file-item">
+            <span class="file-icon">📄</span>
+            <span class="file-name">Meeting_Notes_Jan2025.docx</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section">
+        <h4>Common Projects</h4>
+        <div class="common-projects">
+          <div class="project-item">
+            <span class="project-icon">🔬</span>
+            <span>Federated Learning Research</span>
+          </div>
+          <div class="project-item">
+            <span class="project-icon">🤖</span>
+            <span>Healthcare AI Initiative</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- JS for Mobile Menu and Chat -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const navActions = document.querySelector(".nav-actions");
+
+    hamburger.addEventListener("click", () => {
+      navActions.classList.toggle("active");
+      hamburger.classList.toggle("open");
+    });
+
+    // Conversation selection
+    const conversations = document.querySelectorAll('.conversation-item');
+    conversations.forEach(conv => {
+      conv.addEventListener('click', function() {
+        conversations.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Auto-scroll to bottom of messages
+    const messagesContent = document.querySelector('.messages-content');
+    if (messagesContent) {
+      messagesContent.scrollTop = messagesContent.scrollHeight;
+    }
+
+    // Info sidebar toggle (for mobile)
+    const closeInfo = document.querySelector('.close-info');
+    const infoSidebar = document.querySelector('.info-sidebar');
+    
+    if (closeInfo) {
+      closeInfo.addEventListener('click', () => {
+        infoSidebar.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+</html>

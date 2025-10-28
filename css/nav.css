@@ -1,0 +1,109 @@
+/* Navbar */
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2a8e9e;
+      --primary-dark: #237a87;
+      --primary-light: #3ba3b4;
+      --accent: #4db8c7;
+      
+      --text-primary: #180D39;
+      --text-secondary: #1D1E20;
+      --text-tertiary: #6b7280;
+      --text-muted: #9ca3af;
+      
+      --bg-primary: #ffffff;
+      --bg-secondary: #E9f3f4;
+      --bg-tertiary: #f8fcfc;
+      --border: #d1e7e7;
+      --border-light: #e5f2f2;
+
+      --shadow-sm: 0 1px 3px rgba(42, 142, 158, 0.1);
+      --shadow-md: 0 4px 6px rgba(42, 142, 158, 0.1);
+      --shadow-lg: 0 10px 25px rgba(42, 142, 158, 0.15);
+    }
+    .navbar {
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo span {
+      color: var(--text-primary);
+    }
+
+    .search {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: var(--bg-tertiary);
+      transition: all 0.2s ease;
+    }
+
+    .search input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: var(--bg-primary);
+      box-shadow: 0 0 0 3px rgba(42, 142, 158, 0.1);
+    }
+
+    .search input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-actions a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-actions a:hover,
+    .nav-actions a.active {
+      color: var(--primary);
+      background: rgba(42, 142, 158, 0.1);
+    }

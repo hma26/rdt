@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jobs — ResearchData</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/jbs.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+  <!-- Top Navbar (matches other pages) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="location.href='home.html'">Research<span>Data</span></div>
+      <div class="search">
+        <input type="search" placeholder="Search research, people, and publications...">
+      </div>
+      <nav class="nav-actions">
+        <a href="home.html">Home</a>
+        <a href="publication.html">Publications</a>
+        <a href="jobs.html" class="active">Jobs</a>
+        <a href="proj.html">Projects</a>
+        <a href="msg.html">Messages</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="jobs-hero">
+    <div class="jobs-container">
+      <h1>Research & Academic Jobs</h1>
+      <p>Find research positions, postdocs, faculty roles, and industry opportunities related to your field.</p>
+    </div>
+  </section>
+
+  <main class="jobs-container">
+    <div class="jobs-grid">
+      <section class="jobs-list">
+        <div class="job-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="company-badge">Institute for Advanced Computing</div>
+              <h3 style="margin:.25rem 0">Senior Research Scientist — Distributed Systems</h3>
+              <div class="job-meta">Remote • Full-time • Posted 3 days ago</div>
+            </div>
+            <div>
+              <button class="apply-btn" onclick="openApply(event,'Senior Research Scientist — Distributed Systems','Institute for Advanced Computing')">Apply</button>
+            </div>
+          </div>
+          <p style="margin-top:1rem;color:#374151">We are seeking a Senior Research Scientist with expertise in distributed systems, cloud-native scheduling, and energy-aware resource management. Candidates should have a strong publication record and experience mentoring students.</p>
+        </div>
+
+        <div class="job-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="company-badge">University Research Lab</div>
+              <h3 style="margin:.25rem 0">Postdoctoral Researcher — Machine Learning & Climate</h3>
+              <div class="job-meta">On-site (Cambridge, MA) • 2-year • Posted 1 week ago</div>
+            </div>
+            <div>
+              <button class="apply-btn" onclick="openApply(event,'Postdoctoral Researcher — Machine Learning & Climate','University Research Lab')">Apply</button>
+            </div>
+          </div>
+          <p style="margin-top:1rem;color:#374151">Work on projects combining deep learning with climate modeling. Experience with geospatial data, TensorFlow/PyTorch, and scientific computing preferred.</p>
+        </div>
+
+        <div class="job-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="company-badge">Cloud Systems Corp.</div>
+              <h3 style="margin:.25rem 0">Research Engineer — Federated Learning</h3>
+              <div class="job-meta">Hybrid • Full-time • Posted 2 days ago</div>
+            </div>
+            <div>
+              <button class="apply-btn" onclick="openApply(event,'Research Engineer — Federated Learning','Cloud Systems Corp.')">Apply</button>
+            </div>
+          </div>
+          <p style="margin-top:1rem;color:#374151">Join our applied research team to build privacy-preserving federated learning pipelines for healthcare partners. Strong software engineering skills required.</p>
+        </div>
+
+      </section>
+
+      <aside class="filters">
+        <div class="card">
+          <h3>Filters</h3>
+          <div class="filter-group">
+            <label>Location</label>
+            <select id="filter-location" class="form-select">
+              <option value="any">Any</option>
+              <option value="remote">Remote</option>
+              <option value="on-site">On-site</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Job Type</label>
+            <select id="filter-type" class="form-select">
+              <option value="any">Any</option>
+              <option value="full-time">Full-time</option>
+              <option value="part-time">Part-time</option>
+              <option value="contract">Contract</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Field</label>
+            <select id="filter-field" class="form-select">
+              <option value="any">Any</option>
+              <option value="ml">Machine Learning</option>
+              <option value="systems">Systems</option>
+              <option value="security">Security</option>
+              <option value="climate">Climate Science</option>
+            </select>
+          </div>
+
+          <div style="margin-top:1rem;display:flex;gap:0.5rem">
+            <button class="btn">Clear</button>
+            <button class="btn btn-primary" onclick="applyFilters()">Apply</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem">
+          <h3>Tips for Applicants</h3>
+          <ul style="margin:.5rem 0;padding-left:1.2rem;color:#374151">
+            <li>Include a concise research statement</li>
+            <li>Link to code / reproducible artifacts</li>
+            <li>Mention relevant publications and roles</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Simple apply modal -->
+  <div id="apply-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);align-items:center;justify-content:center;z-index:999">
+    <div style="background:#fff;padding:1.25rem;border-radius:8px;max-width:600px;width:90%">
+      <h3 id="apply-role">Apply</h3>
+      <p id="apply-org" style="color:#6b7280;margin-top:0">Organization</p>
+      <form id="apply-form">
+        <div style="margin-top:1rem">
+          <label for="app-name">Full name</label>
+          <input id="app-name" class="form-input" required>
+        </div>
+        <div style="margin-top:0.75rem">
+          <label for="app-email">Email</label>
+          <input id="app-email" type="email" class="form-input" required>
+        </div>
+        <div style="margin-top:0.75rem">
+          <label for="app-cover">Cover message</label>
+          <textarea id="app-cover" class="form-textarea" rows="4"></textarea>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;justify-content:flex-end">
+          <button type="button" class="btn ghost" onclick="closeApply()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 ResearchData — Connecting researchers worldwide</p>
+  </footer>
+
+  <script>
+    function openApply(e, role, org) {
+      document.getElementById('apply-role').textContent = role;
+      document.getElementById('apply-org').textContent = org;
+      document.getElementById('apply-modal').style.display = 'flex';
+    }
+    function closeApply() {
+      document.getElementById('apply-modal').style.display = 'none';
+      document.getElementById('apply-form').reset();
+    }
+    document.getElementById('apply-form').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      // Minimal client-side behavior — simulate success
+      alert('Application sent. The hiring team will contact you.');
+      closeApply();
+    });
+
+    function applyFilters(){
+      // Placeholder: filters are not wired to dynamic dataset yet.
+      alert('Filters applied (demo).');
+    }
+  </script>
+</body>
+</html>
