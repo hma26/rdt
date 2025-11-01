@@ -11,18 +11,15 @@
   --primary-dark: #237a87;
   --primary-light: #3ba3b4;
   --accent: #4db8c7;
-
   --text-primary: #180D39;
   --text-secondary: #1D1E20;
   --text-tertiary: #6b7280;
   --text-muted: #9ca3af;
-
   --bg-primary: #ffffff;
   --bg-secondary: #E9f3f4;
   --bg-tertiary: #f8fcfc;
   --border: #d1e7e7;
   --border-light: #e5f2f2;
-
   --shadow-sm: 0 1px 3px rgba(42, 142, 158, 0.1);
   --shadow-md: 0 4px 6px rgba(42, 142, 158, 0.1);
   --shadow-lg: 0 10px 25px rgba(42, 142, 158, 0.15);
@@ -42,7 +39,7 @@ body {
   padding: 0 1.5rem;
 }
 
-/* Top Navbar */
+/* --- NAVBAR --- */
 .navbar {
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
@@ -88,17 +85,6 @@ body {
   transition: all 0.2s ease;
 }
 
-.search input:focus {
-  outline: none;
-  border-color: var(--primary);
-  background: var(--bg-primary);
-  box-shadow: 0 0 0 3px rgba(42, 142, 158, 0.1);
-}
-
-.search input::placeholder {
-  color: var(--text-muted);
-}
-
 .nav-actions {
   display: flex;
   gap: 1.5rem;
@@ -116,19 +102,18 @@ body {
 }
 
 .nav-actions a:hover,
-.nav-actions a[href="#/profile"] {
+.nav-actions a.active {
   color: var(--primary);
   background: rgba(42, 142, 158, 0.1);
 }
 
-/* Profile Header */
+/* --- PROFILE HEADER --- */
 .profile-header {
   background: var(--bg-primary);
   border-radius: 16px;
   padding: 2.5rem;
   margin: 2rem auto;
   box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-light);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -150,22 +135,20 @@ body {
   object-fit: cover;
 }
 
-.profile-info h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
+.online-indicator {
+  position: relative;
 }
 
-.profile-info .muted {
-  color: var(--text-tertiary);
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.profile-info p:last-child {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
+.online-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  background: #10b981;
+  border: 2px solid white;
+  border-radius: 50%;
 }
 
 .profile-stats {
@@ -184,16 +167,14 @@ body {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 0.25rem;
 }
 
 .profile-stats span {
   font-size: 0.875rem;
   color: var(--text-tertiary);
-  font-weight: 500;
 }
 
-/* Main Grid Layout */
+/* --- MAIN LAYOUT & CARDS --- */
 .main-grid {
   display: grid;
   grid-template-columns: 300px 1fr 280px;
@@ -201,7 +182,13 @@ body {
   margin-bottom: 3rem;
 }
 
-/* Card Styles */
+.sidebar-left,
+.sidebar-right {
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+
 .card {
   background: var(--bg-primary);
   border-radius: 12px;
@@ -218,32 +205,20 @@ body {
 .card h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
 .card p {
-  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
 .card ul {
   list-style: none;
+  padding: 0;
 }
 
-.card ul li {
-  padding: 0.5rem 0;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.card ul li:last-child {
-  border-bottom: none;
-}
-
-/* Feed Section */
+/* --- FEED (PUBLICATIONS) --- */
 .feed {
   min-height: 100vh;
 }
@@ -251,28 +226,16 @@ body {
 .feed h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-primary);
   margin-bottom: 1.5rem;
-  padding: 0 0.5rem;
 }
 
 .feed-item {
   margin-bottom: 1.5rem;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.feed-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
 }
 
 .feed-item h4 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
 }
 
 .feed-item .muted {
@@ -281,11 +244,19 @@ body {
   margin-bottom: 1rem;
 }
 
-.feed-item>p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+.feed-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.feed-item .timestamps {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
 }
 
 .feed-footer {
@@ -295,7 +266,7 @@ body {
   border-top: 1px solid var(--border-light);
 }
 
-/* Buttons */
+/* --- BUTTONS --- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -310,215 +281,101 @@ body {
   transition: all 0.2s ease;
 }
 
-.btn.ghost {
-  background: var(--bg-tertiary);
-  color: var(--primary);
-  border: 1px solid var(--border);
-}
-
-.btn.ghost:hover {
+.btn-primary {
   background: var(--primary);
   color: white;
-  transform: translateY(-1px);
 }
 
-/* Sidebar Styles */
-.sidebar-left,
-.sidebar-right {
-  height: fit-content;
-  position: sticky;
-  top: 90px;
+.btn-primary:hover {
+  background: var(--primary-dark);
 }
 
-/* Footer */
-.footer {
-  background: var(--text-secondary);
-  color: var(--text-muted);
-  text-align: center;
-  padding: 2rem;
-  margin-top: 3rem;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .main-grid {
-    grid-template-columns: 250px 1fr 250px;
-    gap: 1.5rem;
-  }
-
-  .profile-stats {
-    gap: 1rem;
-  }
-
-  .profile-stats>div {
-    min-width: 60px;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    height: auto;
-    padding: 1rem 1.5rem;
-    gap: 1rem;
-  }
-
-  .search {
-    width: 100%;
-    max-width: none;
-  }
-
-  .nav-actions {
-    width: 100%;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .profile-header {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .profile-info {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .main-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .sidebar-left,
-  .sidebar-right {
-    position: static;
-  }
-
-  .profile-stats {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
-  }
-
-  .nav-container {
-    padding: 1rem;
-  }
-
-  .profile-header {
-    padding: 1.5rem;
-    margin: 1rem auto;
-  }
-
-  .nav-actions {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .profile-stats {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-}
-
-/* Enhancements */
-.card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
-  transition: all 0.2s ease;
-}
-
-/* Badge styles for skills */
-.card ul li {
-  background: var(--bg-tertiary);
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  margin: 0.25rem 0;
-  display: inline-block;
-  font-size: 0.875rem;
-  color: var(--primary);
-  font-weight: 500;
 }
 
-/* Special styling for Skills section */
-.card:has(h3:contains("Skills")) ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.btn-secondary:hover {
+  background-color: var(--border-light);
 }
-
-/* Fallback for browsers without :has() support */
-.skills-list,
-#activity-list,
-#collaborators-list,
-#projects-list,
-#achievements-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skills-list li {
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  margin: 0;
-  display: inline-block;
-  font-size: 0.875rem;
-  color: var(--primary);
-  font-weight: 500;
-}
-
-/* Activity indicators */
-.activity-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--primary);
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.online-indicator {
-  position: relative;
-}
-
-.online-indicator::after {
-  content: '';
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 16px;
-  height: 16px;
-  background: #10b981;
-  border: 2px solid white;
-  border-radius: 50%;
-}
-
 
 .btn-logout {
   background-color: var(--primary-light);
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .btn-logout:hover {
   background-color: var(--primary-dark);
 }
 
+.edit-pub-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.edit-pub-btn:hover {
+  opacity: 1;
+}
+
+/* --- FORMS & INPUTS --- */
+.form-input,
+.form-textarea,
+.form-input-skill {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--bg-tertiary);
+  transition: all 0.2s ease;
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-input-skill:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(42, 142, 158, 0.1);
+}
+
+.list-input-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.form-input-skill {
+  flex-grow: 1;
+}
+
+.btn-add-skill {
+  flex-shrink: 0;
+  background: var(--primary);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.btn-add-skill:hover {
+  background: var(--primary-dark);
+}
+
+/* --- MODALS --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -526,7 +383,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -546,79 +403,71 @@ body {
   transition: transform 0.3s ease;
 }
 
-.modal-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.modal-content p {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
 .modal-actions {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
-.modal-actions .btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-}
+/* *********************************************** */
+/* --- UNIFIED TAG & DYNAMIC LIST STYLES (THE FIX) --- */
+/* *********************************************** */
 
-.btn-secondary {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-}
-
-.btn-secondary:hover {
-  background-color: var(--border-light);
-}
-
-.btn-danger {
-  background-color: #e53e3e;
-  color: white;
-  border: none;
-}
-
-.btn-danger:hover {
-  background-color: #c53030;
-}
-
-/* for the bio button */
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 0.95rem;
-  background: var(--bg-tertiary);
-  resize: vertical;
-  transition: all 0.2s ease;
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  background: var(--bg-primary);
-  box-shadow: 0 0 0 3px rgba(42, 142, 158, 0.1);
-}
-
-/* adding skills button */
-.skills-list li {
+/* 1. Style the containers for all lists that should display as tags */
+.skills-list,
+#user-skills-list,
+#activity-list,
+#collaborators-list,
+#projects-list,
+#achievements-list,
+.tags-container {
   display: flex;
-  /* Use flexbox to align text and button */
-  align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
+/* 2. Style the individual items (the pills/tags) inside those containers */
+.tag,
+.skills-list li,
+#user-skills-list li,
+#activity-list li,
+#collaborators-list li,
+#projects-list li,
+#achievements-list li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* 3. Add a hover effect for all tags/pills */
+.tag:hover,
+.skills-list li:hover,
+#user-skills-list li:hover,
+#activity-list li:hover,
+#collaborators-list li:hover,
+#projects-list li:hover,
+#achievements-list li:hover {
+  border-color: var(--primary);
+  background: var(--bg-secondary);
+}
+
+/* 4. Style the remove buttons for all tags/pills */
+.remove-tag,
 .remove-skill-btn {
   background: none;
   border: none;
@@ -629,62 +478,113 @@ body {
   line-height: 1;
   opacity: 0.5;
   transition: opacity 0.2s ease;
-  padding: 0 0.25rem;
+  padding: 0;
+  margin-left: 0.25rem;
 }
 
+.remove-tag:hover,
 .remove-skill-btn:hover {
   opacity: 1;
 }
 
-.skill-input-container {
-  display: flex;
-  gap: 0.5rem;
+/* 5. Styles for the tag input field in the publication modal */
+.skills-list li span,
+#user-skills-list li span,
+#activity-list li span,
+#collaborators-list li span,
+#projects-list li span,
+#achievements-list li span {
+  flex: 1;
 }
 
-.form-input-skill {
-  flex-grow: 1;
-  padding: 0.5rem 0.75rem;
+
+/* 6. Styles for the tag input field in the publication modal */
+.tag-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
   border: 2px solid var(--border);
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.2s ease;
 }
 
-.form-input-skill:focus {
-  outline: none;
+.tag-input-container:focus-within {
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(42, 142, 158, 0.1);
 }
 
-.btn-add-skill {
-  flex-shrink: 0;
-  background: var(--primary);
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  line-height: 1;
+
+.form-input-tag {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  background: transparent;
+  min-width: 200px;
+  font-size: 0.95rem;
 }
 
-.btn-add-skill:hover {
-  background: var(--primary-dark);
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: white;
-  border: 1px solid var(--primary);
-}
-
-.btn-primary:hover {
-  background: var(--primary-dark);
-  color: white;
-  transform: translateY(-1px);
-
-}
-
-.list-input-container {
+/* --- EDIT MODE --- */
+.profile-actions {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  align-self: flex-start;
+}
+
+#save-profile-btn,
+#cancel-profile-btn {
+  padding: 0.75rem 1.5rem;
+}
+
+.edit-control {
+  display: none;
+}
+
+body.edit-mode .edit-control {
+  display: block;
+}
+
+body.edit-mode .list-input-container {
+  display: flex;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .search,
+  .nav-actions {
+    width: 100%;
+    max-width: none;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .profile-info {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 }

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,13 +8,14 @@
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
- 
+
 </head>
+
 <body>
   <!-- Top Navbar -->
   <header class="navbar">
     <div class="nav-container">
-  <div class="logo" onclick="location.href='home.html'">Research<span>Data</span></div>
+      <div class="logo" onclick="location.href='home.html'">Research<span>Data</span></div>
       <div class="search">
         <input type="search" placeholder="Search research, people, and publications...">
       </div>
@@ -68,7 +70,7 @@
     </aside>
 
     <!-- Center Feed -->
-    <section class="feed">
+    <section id="main-feed" class="feed">
       <div class="feed-post card">
         <textarea placeholder="Share a research update, ask a question, or start a discussion..."></textarea>
         <div class="actions">
@@ -81,7 +83,8 @@
       <article class="card feed-item">
         <div class="publication-badge">New Publication</div>
         <div class="feed-header">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Dr. Zike Example">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+            alt="Dr. Zike Example">
           <div class="online-dot"></div>
           <div>
             <strong>Dr. Zike Example</strong>
@@ -90,7 +93,9 @@
         </div>
         <div class="feed-content">
           <h4>"Efficient Cloud Resource Management for Distributed Systems"</h4>
-          <p>We present a new scheduling algorithm that improves resource utilization by 35% in multi-cloud deployments. Our approach considers network latency, computational load, and energy efficiency to optimize task distribution across heterogeneous cloud infrastructures.</p>
+          <p>We present a new scheduling algorithm that improves resource utilization by 35% in multi-cloud deployments.
+            Our approach considers network latency, computational load, and energy efficiency to optimize task
+            distribution across heterogeneous cloud infrastructures.</p>
         </div>
         <div class="feed-stats">
           <span>89 views</span>
@@ -109,7 +114,8 @@
       <article class="card feed-item">
         <div class="question-badge">Research Question</div>
         <div class="feed-header">
-          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=80&h=80&fit=crop&crop=face" alt="Prof. Researcher">
+          <img src="https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=80&h=80&fit=crop&crop=face"
+            alt="Prof. Researcher">
           <div>
             <strong>Prof. Sarah Chen</strong>
             <p class="meta">Posted in AI & Machine Learning • 5 hours ago</p>
@@ -117,7 +123,9 @@
         </div>
         <div class="feed-content">
           <h4>"How can federated learning ensure privacy across hospitals?"</h4>
-          <p>I'm researching federated learning applications in healthcare. What are the current best practices for handling sensitive patient data while maintaining model accuracy? Any recent papers on differential privacy in this context?</p>
+          <p>I'm researching federated learning applications in healthcare. What are the current best practices for
+            handling sensitive patient data while maintaining model accuracy? Any recent papers on differential privacy
+            in this context?</p>
         </div>
         <div class="feed-stats">
           <span>156 views</span>
@@ -134,7 +142,8 @@
       <article class="card feed-item">
         <div class="publication-badge" style="background: #10b981;">Collaboration</div>
         <div class="feed-header">
-          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Dr. Kumar">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+            alt="Dr. Kumar">
           <div>
             <strong>Dr. Raj Kumar</strong>
             <p class="meta">Looking for collaborators • 1 day ago</p>
@@ -142,7 +151,9 @@
         </div>
         <div class="feed-content">
           <h4>"Seeking ML researchers for quantum computing project"</h4>
-          <p>We're starting a new project on quantum machine learning algorithms and looking for collaborators with expertise in quantum gates and optimization. The project is funded and based at Stanford. Remote collaboration welcome.</p>
+          <p>We're starting a new project on quantum machine learning algorithms and looking for collaborators with
+            expertise in quantum gates and optimization. The project is funded and based at Stanford. Remote
+            collaboration welcome.</p>
         </div>
         <div class="feed-stats">
           <span>245 views</span>
@@ -244,5 +255,180 @@
   <footer class="footer">
     <p>© 2025 ResearchData — Connecting researchers worldwide</p>
   </footer>
+
+  <script>
+    // --- Page Protection & Global State ---
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      alert('Access denied. Please log in.');
+      window.location.href = 'login.html';
+    }
+    let loggedInUser = null; // We'll fetch the logged-in user's info here
+
+    // --- Main Logic ---
+    document.addEventListener('DOMContentLoaded', async () => {
+      const feedContainer = document.getElementById('main-feed');
+
+      // --- API Helper Functions ---
+      const apiFetch = async (url, options = {}) => {
+        const response = await fetch(`http://localhost:3001${url}`, {
+          ...options,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+            ...options.headers,
+          },
+          cache: 'no-cache'
+        });
+        if (!response.ok) {
+          const errorData = await response.json();
+          // Check for a 401 Unauthorized error specifically
+          if (response.status === 401) {
+            alert('Session expired. Please log in again.');
+            window.location.href = 'login.html';
+          }
+          throw new Error(errorData.message || 'An API error occurred.');
+        }
+        if (response.status !== 204) { // 204 No Content has no body
+          return await response.json();
+        }
+        return true;
+      };
+
+      // --- RENDER FUNCTION ---
+      const renderFeedItem = (item) => {
+        const isAuthor = loggedInUser && item.owner.id === loggedInUser.id;
+        const createdAt = new Date(item.createdAt).toLocaleDateString();
+
+        const needsReadMore = (item.abstract?.length || 0) > 250;
+        const abstractHTML = `<p>${item.abstract || 'No abstract available.'}</p>`;
+
+        // --- LIKE/DISLIKE/SAVE LOGIC ---
+        const userLike = item.likes && item.likes[0];
+        const isLiked = userLike && !userLike.isDislike;
+        const isDisliked = userLike && userLike.isDislike;
+        const isSaved = item.saves && item.saves.length > 0;
+
+        // We'll need a backend change for separate like/dislike counts. For now, this is a placeholder.
+        const likeCount = item._count.likes || 0;
+        const commentCount = item._count.comments || 0;
+        const saveCount = item._count.saves || 0;
+        const viewCount = item._count.views || 0;
+
+        // --- SVG ICONS ---
+        const likeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>`;
+        const commentIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
+        const saveIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
+
+        return `
+        <article class="card feed-item" data-pub-id="${item.id}">
+            <div class="publication-badge">${(item.classifications && item.classifications[0]) || 'General'}</div>
+            <div class="feed-header">
+                <a href="profile.html?id=${item.owner.id}">
+                    <img src="${item.owner.profileImage || 'avt.png'}" alt="${item.owner.firstName}">
+                </a>
+                <div>
+                    <strong>
+                        <a href="profile.html?id=${item.owner.id}" style="text-decoration:none; color:inherit;">
+                            ${item.owner.firstName} ${item.owner.lastName}
+                        </a>
+                        ${isAuthor ? '<span class="author-badge">Author</span>' : ''}
+                    </strong>
+                    <p class="meta">Published in ${item.venue || 'N/A'} • ${createdAt}</p>
+                </div>
+            </div>
+            <div class="feed-content">
+    <h4>${item.title}</h4>
+    <div class="abstract-content" id="abstract-${item.id}">
+        ${abstractHTML}
+    </div>
+    ${needsReadMore ? `<button class="read-more-btn" onclick="toggleAbstract('${item.id}')">Read More</button>` : ''}
+</div>
+            <div class="feed-stats">
+                <span>${viewCount} views</span>
+                <span>${saveCount} saves</span>
+            </div>
+            <div class="feed-footer">
+                <button class="btn ghost like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${item.id}', false)">
+                    ${likeIcon}
+                    Like (${likeCount})
+                </button>
+                <button class="btn ghost" onclick="openComments('${item.id}')">
+                    ${commentIcon}
+                    Comment (${commentCount})
+                </button>
+                <button class="btn ghost save-btn ${isSaved ? 'active' : ''}" onclick="toggleSave('${item.id}')">
+                    ${saveIcon}
+                    ${isSaved ? `Saved` : `Save`}
+                </button>
+            </div>
+        </article>
+    `;
+      };
+      // --- <button class="btn ghost dislike-btn ${isDisliked ? 'active' : ''}" onclick="toggleLike('${item.id}', true)">👎</button> ---
+      // --- Main Fetch and Render Logic ---
+      const loadFeed = async () => {
+        try {
+          // Fetch logged-in user and feed data at the same time for performance
+          const [user, feedData] = await Promise.all([
+            apiFetch('/profile/me'),
+            apiFetch('/feed')
+          ]);
+
+          loggedInUser = user; // Set the global variable
+
+          // Clear the static placeholder content but keep the post composer
+          feedContainer.querySelectorAll('.feed-item').forEach(el => el.remove());
+
+          // Render the new dynamic content
+          feedData.forEach(item => {
+            feedContainer.insertAdjacentHTML('beforeend', renderFeedItem(item));
+          });
+        } catch (error) {
+          console.error("Failed to load feed:", error);
+          // The apiFetch helper now handles the redirect for auth errors
+        }
+      };
+
+      // --- GLOBAL FUNCTIONS (accessible via onclick in the HTML) ---
+      window.toggleAbstract = (pubId) => {
+        const abstractDiv = document.getElementById(`abstract-${pubId}`);
+        const button = abstractDiv.nextElementSibling;
+        abstractDiv.classList.toggle('expanded');
+        button.textContent = abstractDiv.classList.contains('expanded') ? 'Show Less' : 'Read More';
+      };
+
+      window.toggleLike = async (pubId, isDislike) => {
+        try {
+          await apiFetch(`/publications/${pubId}/like`, {
+            method: 'POST',
+            body: JSON.stringify({ isDislike })
+          });
+          await loadFeed(); // Simple way to refresh the entire feed to show new counts
+        } catch (error) {
+          console.error('Failed to toggle like:', error);
+          alert('Action failed. Please try again.');
+        }
+      };
+
+      window.toggleSave = async (pubId) => {
+        try {
+          await apiFetch(`/publications/${pubId}/save`, { method: 'POST' });
+          await loadFeed(); // Refresh the feed
+        } catch (error) {
+          console.error('Failed to toggle save:', error);
+          alert('Action failed. Please try again.');
+        }
+      };
+
+      window.openComments = (pubId) => {
+        alert(`This will open comments for publication ID: ${pubId}`);
+      };
+
+      // --- Initial Load ---
+      await loadFeed();
+    });
+  </script>
 </body>
+
 </html>

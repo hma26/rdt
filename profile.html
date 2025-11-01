@@ -5,10 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ResearchData — Profile</title>
-
   <link rel="stylesheet" href="css/profile.css">
-  
-
+  <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
@@ -43,6 +41,11 @@
         <p id="user-interests"><strong>Research interests:</strong> Cloud Computing, Security, Web Development</p>
       </div>
     </div>
+    <div class="profile-actions">
+      <button id="edit-profile-btn" class="btn btn-primary">✏️ Edit Profile</button>
+      <button id="save-profile-btn" class="btn btn-primary" style="display: none;">✅ Save Changes</button>
+      <button id="cancel-profile-btn" class="btn btn-secondary" style="display: none;">Cancel</button>
+    </div>
     <div class="profile-stats">
       <div><strong>1,234</strong><span>Reads</span></div>
       <div><strong>456</strong><span>Citations</span></div>
@@ -52,38 +55,46 @@
 
   <!-- Main Layout -->
   <main class="main-grid container">
-    <!-- Left Sidebar -->
+    <!-- Column 1: Left Sidebar -->
     <aside class="sidebar-left">
+      <!-- MOVE The "About" Card Here -->
       <div class="card">
         <h3>About</h3>
         <p id="user-bio-text">Loading biography...</p>
-        <button id="edit-bio-button" class="btn ghost" style="margin-top: 1rem;">Edit Bio</button>
+        <div class="edit-control">
+          <button id="edit-bio-button" class="btn ghost" style="margin-top: 1rem;">Edit Bio</button>
+        </div>
         <div id="edit-bio-form" style="display: none; margin-top: 1rem;">
           <textarea id="bio-textarea" class="form-textarea" rows="5"></textarea>
           <div class="form-actions" style="margin-top: 1rem; display: flex; gap: 1rem;">
-            <button id="save-bio-button" class="btn">Save</button>
-            <button id="cancel-bio-button" class="btn ghost">Cancel</button>
+            <button id="save-bio-button" class="btn btn-primary">Save</button>
+            <button id="cancel-bio-button" class="btn btn-secondary">Cancel</button>
           </div>
         </div>
       </div>
+
+      <!-- MOVE The "Skills" Card Here -->
       <div class="card">
         <h3>Skills</h3>
-        <ul id="user-skills-list" class="skills-list">
-        </ul>
-        <div class="skill-input-container" style="margin-top: 1.5rem;">
-          <input type="text" id="skill-input" class="form-input-skill" placeholder="Add a new skill...">
-          <!-- This is the new, correct button with the data attributes -->
-          <button data-list="skills" data-input="skill-input" class="btn btn-add-skill add-list-item-btn">+</button>
+        <ul id="user-skills-list" class="skills-list"></ul>
+        <div class="edit-control">
+          <div class="list-input-container">
+            <input type="text" id="skill-input" class="form-input-skill" placeholder="Add a new skill...">
+            <button data-list="skills" data-input="skill-input" class="btn btn-add-skill add-list-item-btn">+</button>
+          </div>
         </div>
       </div>
+
+      <!-- MOVE The "Recent Activity" Card Here -->
       <div class="card">
         <h3>Recent Activity</h3>
-        <ul id="activity-list">
-        </ul>
-        <div class="list-input-container">
-          <input type="text" id="activity-input" class="form-input-skill" placeholder="Add new activity...">
-          <button data-list="recentActivity" data-input="activity-input"
-            class="btn btn-add-skill add-list-item-btn">+</button>
+        <ul id="activity-list"></ul>
+        <div class="edit-control">
+          <div class="list-input-container">
+            <input type="text" id="activity-input" class="form-input-skill" placeholder="Add new activity...">
+            <button data-list="recentActivity" data-input="activity-input"
+              class="btn btn-add-skill add-list-item-btn">+</button>
+          </div>
         </div>
       </div>
     </aside>
@@ -103,6 +114,7 @@
         </div>
 
         <form id="publication-form">
+          <input type="hidden" id="pub-id">
           <div class="form-group">
             <label for="pub-title" class="form-label required">Title</label>
             <input type="text" id="pub-title" class="form-input" placeholder="e.g., A Novel Approach to..." required>
@@ -113,6 +125,16 @@
               <label for="pub-year" class="form-label">Year</label>
               <input type="number" id="pub-year" class="form-input" placeholder="e.g., 2024">
             </div>
+
+            <div class="form-group">
+              <label for="pub-classifications-input" class="form-label">Classifications</label>
+              <div id="pub-tags-container" class="tag-input-container">
+                <input type="text" id="pub-classifications-input" class="form-input-tag"
+                  placeholder="Type a classification and press Enter...">
+              </div>
+              <div id="pub-suggestions-panel" class="suggestions-panel"></div>
+            </div>
+
             <div class="form-group">
               <label for="pub-venue" class="form-label">Journal / Venue</label>
               <input type="text" id="pub-venue" class="form-input" placeholder="e.g., Journal of Cloud Computing">
@@ -133,36 +155,45 @@
       </div>
     </div>
 
+
     <!-- Right Sidebar -->
     <aside class="sidebar-right">
+      <!-- MOVE The "Collaborators" Card Here -->
       <div class="card">
         <h3>Collaborators</h3>
-        <ul id="collaborators-list">
-        </ul>
-        <div class="list-input-container">
-          <input type="text" id="collaborator-input" class="form-input-skill" placeholder="Add collaborator...">
-          <button data-list="collaborators" data-input="collaborator-input"
-            class="btn btn-add-skill add-list-item-btn">+</button>
+        <ul id="collaborators-list"></ul>
+        <div class="edit-control">
+          <div class="list-input-container">
+            <input type="text" id="collaborator-input" class="form-input-skill" placeholder="Add collaborator...">
+            <button data-list="collaborators" data-input="collaborator-input"
+              class="btn btn-add-skill add-list-item-btn">+</button>
+          </div>
         </div>
       </div>
+
+      <!-- MOVE The "Active Projects" Card Here -->
       <div class="card">
         <h3>Active Projects</h3>
-        <ul id="projects-list">
-        </ul>
-        <div class="list-input-container">
-          <input type="text" id="project-input" class="form-input-skill" placeholder="Add project...">
-          <button data-list="activeProjects" data-input="project-input"
-            class="btn btn-add-skill add-list-item-btn">+</button>
+        <ul id="projects-list"></ul>
+        <div class="edit-control">
+          <div class="list-input-container">
+            <input type="text" id="project-input" class="form-input-skill" placeholder="Add project...">
+            <button data-list="activeProjects" data-input="project-input"
+              class="btn btn-add-skill add-list-item-btn">+</button>
+          </div>
         </div>
       </div>
+
+      <!-- MOVE The "Achievements" Card Here -->
       <div class="card">
         <h3>Achievements</h3>
-        <ul id="achievements-list">
-        </ul>
-        <div class="list-input-container">
-          <input type="text" id="achievement-input" class="form-input-skill" placeholder="Add achievement...">
-          <button data-list="achievements" data-input="achievement-input"
-            class="btn btn-add-skill add-list-item-btn">+</button>
+        <ul id="achievements-list"></ul>
+        <div class="edit-control">
+          <div class="list-input-container">
+            <input type="text" id="achievement-input" class="form-input-skill" placeholder="Add achievement...">
+            <button data-list="achievements" data-input="achievement-input"
+              class="btn btn-add-skill add-list-item-btn">+</button>
+          </div>
         </div>
       </div>
     </aside>
@@ -192,11 +223,87 @@
       window.location.href = 'login.html';
     }
 
-    // --- Main Application Logic (Runs after HTML is loaded) ---
-    document.addEventListener('DOMContentLoaded', async () => {
-      let user; // This will hold our main user object, accessible throughout this block
+    // --- Define Global Variables & Functions ---
+    let user; // Holds the profile data of the person BEING VIEWED
+    let loggedInUser;
+    let userPublications = [];
+    let isMyProfile = false;
 
-      // Get references to all DOM elements we'll interact with ONCE at the top
+    // We declare the render function globally so our refresh handlers can call it.
+    // It will be assigned its real logic inside DOMContentLoaded.
+    let renderPublications = (publications) => { };
+
+    // GLOBAL API HELPER (accessible everywhere)
+    const apiFetch = async (url, options = {}) => {
+      const response = await fetch(`http://localhost:3001${url}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+          ...options.headers,
+        },
+        cache: 'no-cache'
+      });
+      if (response.status === 401) {
+        alert('Session expired. Please log in again.');
+        window.location.href = 'login.html';
+      }
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'An API error occurred.');
+      }
+      if (response.status !== 204) {
+        return await response.json();
+      }
+      return true;
+    };
+
+    // This function will be called by the like/save handlers
+    const refreshPublications = async () => {
+      const url = isMyProfile ? '/publications/mine' : `/users/${user.id}/publications`;
+      try {
+        const newPublications = await apiFetch(url);
+        userPublications = newPublications;
+        renderPublications(userPublications);
+      } catch (error) {
+        console.error("Failed to refresh publications:", error);
+      }
+    };
+
+    // GLOBAL INTERACTION HANDLERS (accessible by onclick)
+    window.toggleLike = async (pubId, isDislike) => {
+      try {
+        await apiFetch(`/publications/${pubId}/like`, { method: 'POST', body: JSON.stringify({ isDislike }) });
+        await refreshPublications();
+      } catch (error) {
+        console.error('Failed to toggle like:', error);
+        alert('Action failed. Please try again.');
+      }
+    };
+
+    window.toggleSave = async (pubId) => {
+      try {
+        await apiFetch(`/publications/${pubId}/save`, { method: 'POST' });
+        await refreshPublications();
+      } catch (error) {
+        console.error('Failed to toggle save:', error);
+        alert('Action failed. Please try again.');
+      }
+    };
+
+    window.openComments = (pubId) => {
+      alert(`Comments for publication ID: ${pubId} coming soon!`);
+    };
+
+    // --- Main Application Logic ---
+    document.addEventListener('DOMContentLoaded', async () => {
+      let originalUser;
+      let isEditMode = false;
+
+      // --- Get all DOM element references ---
+      const mainEditBtn = document.getElementById('edit-profile-btn');
+      const saveProfileBtn = document.getElementById('save-profile-btn');
+      const cancelProfileBtn = document.getElementById('cancel-profile-btn');
       const fullNameEl = document.getElementById('user-fullname');
       const affiliationEl = document.getElementById('user-affiliation');
       const interestsEl = document.getElementById('user-interests');
@@ -206,322 +313,247 @@
       const bioTextarea = document.getElementById('bio-textarea');
       const saveBioBtn = document.getElementById('save-bio-button');
       const cancelBioBtn = document.getElementById('cancel-bio-button');
-      const skillsListEl = document.getElementById('user-skills-list');
-      const skillInput = document.getElementById('skill-input');
-      const addSkillBtn = document.getElementById('add-skill-button');
       const publicationsFeedEl = document.getElementById('publications-feed');
       const addPubBtn = document.getElementById('add-publication-btn');
       const pubModal = document.getElementById('publication-modal');
       const pubForm = document.getElementById('publication-form');
       const cancelPubBtn = document.getElementById('cancel-pub-btn');
+      const pubIdInput = document.getElementById('pub-id');
+      const pubTitleInput = document.getElementById('pub-title');
+      const pubYearInput = document.getElementById('pub-year');
+      const pubVenueInput = document.getElementById('pub-venue');
+      const pubAbstractInput = document.getElementById('pub-abstract');
+      const pubModalTitle = pubModal.querySelector('h2');
+      const classificationInput = document.getElementById('pub-classifications-input');
+      const tagsContainer = document.getElementById('pub-tags-container');
+      const suggestionsPanel = document.getElementById('pub-suggestions-panel');
 
-      try {
-        // --- 1. DEFINE DATA FETCHING FUNCTIONS ---
-        const fetchUserData = async () => {
-          const response = await fetch('http://localhost:3001/profile/me', {
-            headers: { 'Authorization': `Bearer ${token}` },
-            cache: 'no-cache'
-          });
-          if (!response.ok) throw new Error('Could not fetch user profile.');
-          return await response.json();
-        };
-
-        const fetchUserPublications = async () => {
-          const response = await fetch('http://localhost:3001/publications/mine', {
-            headers: { 'Authorization': `Bearer ${token}` },
-            cache: 'no-cache'
-          });
-          if (!response.ok) throw new Error('Could not fetch user publications.');
-          return await response.json();
-        };
-
-        // --- 2. DEFINE RENDER FUNCTIONS ---
-
-        // Renders the top profile section
-        const renderProfileInfo = (currentUser) => {
-          fullNameEl.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
-          affiliationEl.textContent = `${currentUser.institution || 'No Institution'} — ${currentUser.department || 'No Department'}`;
-          const interestsText = currentUser.interests.length > 0 ? currentUser.interests.join(', ') : 'No interests listed.';
-          interestsEl.innerHTML = `<strong>Research interests:</strong> ${interestsText}`;
-        };
-
-        // Renders the bio section
-        const renderBio = (currentUser) => {
-          if (currentUser.bio) {
-            bioTextEl.textContent = currentUser.bio;
-            editBioBtn.textContent = 'Edit Bio';
-          } else {
-            bioTextEl.textContent = 'No biography provided yet.';
-            editBioBtn.textContent = 'Add Bio';
-          }
-        };
-
-        // Renders the skills section
-        const renderSkills = () => {
-          skillsListEl.innerHTML = '';
-          if (user.skills && user.skills.length > 0) {
-            user.skills.forEach(skill => {
-              const li = document.createElement('li');
-              li.textContent = skill;
-              const removeBtn = document.createElement('button');
-              removeBtn.className = 'remove-skill-btn';
-              removeBtn.innerHTML = '&times;';
-              removeBtn.onclick = () => removeSkill(skill);
-              li.appendChild(removeBtn);
-              skillsListEl.appendChild(li);
-            });
-          } else {
-            skillsListEl.innerHTML = '<li>Click below to add your first skill!</li>';
-          }
-        };
-
-        // Renders the publications section
-        const renderPublications = (publications) => {
-          const existingContent = publicationsFeedEl.querySelectorAll('.feed-item, .no-pubs-message');
-          existingContent.forEach(el => el.remove());
-
-          if (publications.length > 0) {
-            publications.forEach(pub => {
-              const pubHTML = `
-                            <article class="card feed-item">
-                                <h4>${pub.title}</h4>
-                                <p class="muted">Published in ${pub.venue || 'N/A'} • ${pub.year || 'N/A'}</p>
-                                <p>${pub.abstract || 'No abstract available.'}</p>
-                            </article>`;
-              publicationsFeedEl.insertAdjacentHTML('beforeend', pubHTML);
-            });
-          } else {
-            const noPubsMessage = document.createElement('p');
-            noPubsMessage.className = 'no-pubs-message';
-            noPubsMessage.textContent = "You haven't added any publications yet.";
-            publicationsFeedEl.appendChild(noPubsMessage);
-          }
-        };
-
-        // --- 3. FETCH INITIAL DATA & RENDER PAGE ---
-        const [userData, publicationsData] = await Promise.all([
-          fetchUserData(),
-          fetchUserPublications()
-        ]);
-        user = userData; // Assign to the main variable
-
-        renderProfileInfo(user);
+      // --- EDIT MODE CONTROLS ---
+      const toggleEditMode = (isEditing) => {
+        isEditMode = isEditing;
+        document.body.classList.toggle('edit-mode', isEditing);
+        mainEditBtn.style.display = isEditing ? 'none' : 'inline-flex';
+        saveProfileBtn.style.display = isEditing ? 'inline-flex' : 'none';
+        cancelProfileBtn.style.display = isEditing ? 'inline-flex' : 'none';
         renderBio(user);
-        renderSkills();
-        renderPublications(publicationsData);
+        renderAllLists();
+      };
 
-        // --- 4. SETUP EVENT LISTENERS & HANDLERS ---
+      // --- RENDER FUNCTIONS ---
+      const renderProfileInfo = (currentUser) => {
+        fullNameEl.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+        affiliationEl.textContent = `${currentUser.institution || 'No Institution'} — ${currentUser.department || 'No Department'}`;
+        const interestsText = (currentUser.interests || []).length > 0 ? currentUser.interests.join(', ') : 'No interests listed.';
+        interestsEl.innerHTML = `<strong>Research interests:</strong> ${interestsText}`;
+      };
 
-        // BIO LOGIC
-        const hideBioForm = () => {
-          editBioForm.style.display = 'none';
-          bioTextEl.style.display = 'block';
-          editBioBtn.style.display = 'inline-block';
-        };
-        editBioBtn.addEventListener('click', () => {
-          editBioForm.style.display = 'block';
-          bioTextEl.style.display = 'none';
-          editBioBtn.style.display = 'none';
-          bioTextarea.value = user.bio || '';
-          bioTextarea.focus();
-        });
-        cancelBioBtn.addEventListener('click', hideBioForm);
-        saveBioBtn.addEventListener('click', async () => {
-          const response = await fetch('http://localhost:3001/profile/me', {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-            body: JSON.stringify({ bio: bioTextarea.value })
-          });
-          if (!response.ok) return alert('Failed to save bio.');
-          user = await response.json(); // Update user object
-          renderBio(user);
-          hideBioForm();
-        });
+      const renderBio = (currentUser) => {
+        bioTextEl.textContent = currentUser.bio || 'No biography provided yet.';
+        editBioBtn.parentElement.style.display = isMyProfile && isEditMode ? 'block' : 'none';
+      };
 
-        // SKILLS LOGIC
-        const listsConfig = [
-          { key: 'skills', listId: 'user-skills-list', inputId: 'skill-input' },
-          { key: 'recentActivity', listId: 'activity-list', inputId: 'activity-input' },
-          { key: 'collaborators', listId: 'collaborators-list', inputId: 'collaborator-input' },
-          { key: 'activeProjects', listId: 'projects-list', inputId: 'project-input' },
-          { key: 'achievements', listId: 'achievements-list', inputId: 'achievement-input' }
-        ];
-
-        // Generic function to save any list back to the server
-        const saveList = async (listKey, newItems) => {
-          try {
-            const response = await fetch('http://localhost:3001/profile/me', {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-              body: JSON.stringify({ [listKey]: newItems }) // e.g., { skills: [...] }
-            });
-            if (!response.ok) throw new Error(`Failed to save ${listKey}.`);
-
-            user = await response.json(); // Update the global user object
-            renderAllLists(); // Re-render all lists to stay in sync
-
-          } catch (error) {
-            console.error(error);
-            alert(`Could not save ${listKey}.`);
-          }
-        };
-
-        // Generic function to render a single list
-        const renderList = (config) => {
-          const listEl = document.getElementById(config.listId);
-          const items = user[config.key] || [];
-          listEl.innerHTML = '';
-
-          if (items.length > 0) {
-            items.forEach(itemText => {
-              const li = document.createElement('li');
-              // The key difference is that we are adding the text inside a span,
-              // and the button is a sibling, allowing flexbox to work correctly.
-              li.innerHTML = `<span>${itemText}</span>`;
-
+      const listsConfig = [{ key: 'skills', listId: 'user-skills-list' }, { key: 'recentActivity', listId: 'activity-list' }, { key: 'collaborators', listId: 'collaborators-list' }, { key: 'activeProjects', listId: 'projects-list' }, { key: 'achievements', listId: 'achievements-list' }];
+      const renderList = (config) => {
+        const listEl = document.getElementById(config.listId);
+        const items = user[config.key] || [];
+        listEl.innerHTML = '';
+        if (items.length > 0) {
+          items.forEach(itemText => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${itemText}</span>`;
+            if (isMyProfile && isEditMode) {
               const removeBtn = document.createElement('button');
               removeBtn.className = 'remove-skill-btn';
               removeBtn.innerHTML = '&times;';
-              removeBtn.onclick = () => {
-                const updatedItems = user[config.key].filter(i => i !== itemText);
-                saveList(config.key, updatedItems);
-              };
-
+              removeBtn.onclick = () => { user[config.key] = user[config.key].filter(i => i !== itemText); renderAllLists(); };
               li.appendChild(removeBtn);
-              listEl.appendChild(li);
-            });
-          } else {
-            // A more generic message
-            const keyName = config.key.replace(/([A-Z])/g, ' $1').toLowerCase();
-            // Use a simple paragraph for the empty message instead of an <li>
-            listEl.innerHTML = `<p style="color: var(--text-tertiary); font-size: 0.9rem;">No ${keyName} added yet.</p>`;
-          }
-        };
-
-        // Function to render all configured lists
-        const renderAllLists = () => {
-          listsConfig.forEach(renderList);
-        };
-
-        // Set up event listeners for all "Add" buttons and inputs
-        document.querySelectorAll('.add-list-item-btn').forEach(button => {
-          const listKey = button.dataset.list;
-          const inputId = button.dataset.input;
-          const inputEl = document.getElementById(inputId);
-
-          const addItem = () => {
-            const newItem = inputEl.value.trim();
-            const currentItems = user[listKey] || [];
-            if (newItem && !currentItems.includes(newItem)) {
-              saveList(listKey, [...currentItems, newItem]);
-              inputEl.value = '';
             }
-          };
-
-          button.addEventListener('click', addItem);
-          inputEl.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault();
-              addItem();
-            }
+            listEl.appendChild(li);
           });
-        });
+        } else {
+          const keyName = config.key.replace(/([A-Z])/g, ' $1').toLowerCase();
+          listEl.innerHTML = `<p style="color: var(--text-tertiary); font-size: 0.9rem;">No ${keyName} added yet.</p>`;
+        }
+      };
+      const renderAllLists = () => {
+        // This function's only job is to render the list items (the pills).
+        // It should NOT be responsible for showing or hiding the input forms.
+        // Our CSS now handles that automatically based on the 'edit-mode' body class.
+        listsConfig.forEach(renderList);
+      };
 
-        // Initial render of all lists when the page loads
+      // Assign the logic to the globally declared renderPublications function
+      renderPublications = (publications) => {
+        publicationsFeedEl.querySelectorAll('.feed-item, .no-pubs-message').forEach(el => el.remove());
+        addPubBtn.style.display = isMyProfile ? 'inline-flex' : 'none';
+
+        if (publications && publications.length > 0) {
+          publications.forEach(pub => {
+            const createdAt = new Date(pub.createdAt).toLocaleDateString();
+            const updatedAt = new Date(pub.updatedAt).toLocaleDateString();
+            const classificationsHTML = (pub.classifications || []).map(c => `<span class="tag">${c}</span>`).join('');
+
+            const userLike = pub.likes && pub.likes[0];
+            const isLiked = userLike && !userLike.isDislike;
+            const isSaved = pub.saves && pub.saves.length > 0;
+
+            const likeCount = pub._count.likes || 0;
+            const commentCount = pub._count.comments || 0;
+            const saveCount = pub._count.saves || 0;
+
+            const editButtonHTML = isMyProfile ? `<button class="edit-pub-btn" data-pub-id="${pub.id}">✏️ Edit</button>` : '';
+
+            const likeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>`;
+            const commentIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`;
+            const saveIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
+
+            const pubHTML = `
+                <article class="card feed-item" data-pub-id="${pub.id}">
+                    <div class="feed-item-header">
+                        <h4>${pub.title}</h4>
+                        ${editButtonHTML}
+                    </div>
+                    <p class="muted">Published in ${pub.venue || 'N/A'} • ${pub.year || 'N/A'}</p>
+                    <div class="tags-container" style="margin-bottom: 1rem;">${classificationsHTML}</div>
+                    <p>${pub.abstract || 'No abstract available.'}</p>
+                    <div class="timestamps">Created: ${createdAt} | Last Updated: ${updatedAt}</div>
+                    
+                    <div class="feed-footer">
+                        <button class="btn ghost like-btn ${isLiked ? 'active' : ''}" onclick="toggleLike('${pub.id}', false)">
+                            ${likeIcon} Like (${likeCount})
+                        </button>
+                        
+                        <!-- dislike button position -->
+                        
+                        <button class="btn ghost" onclick="openComments('${pub.id}')">
+                            ${commentIcon} Comment (${commentCount})
+                        </button>
+                        
+                        <!-- 2. UPDATE THE SAVE BUTTON -->
+                        <button class="btn ghost save-btn ${isSaved ? 'active' : ''}" onclick="toggleSave('${pub.id}')">
+                            ${saveIcon} ${isSaved ? `Saved (${saveCount})` : `Save (${saveCount})`}
+                        </button>
+                    </div>
+                </article>`;
+            publicationsFeedEl.insertAdjacentHTML('beforeend', pubHTML);
+          });
+        } else {
+          const noPubsMessage = document.createElement('p');
+          noPubsMessage.className = 'no-pubs-message';
+          noPubsMessage.textContent = "You haven't added any publications yet.";
+          publicationsFeedEl.appendChild(noPubsMessage);
+        }
+      };
+
+      // --- <!-- <button class="btn ghost dislike-btn ${isDisliked ? 'active' : ''}" onclick="toggleLike('${pub.id}', true)">👎</button> --> ---
+      try {
+        // --- INITIAL PAGE LOAD ---
+        // --- publicationsFeedEl.insertAdjacentHTML('beforeend', pubHTML); ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const profileId = urlParams.get('id');
+
+        loggedInUser = await apiFetch('/profile/me');
+
+        if (profileId && profileId !== loggedInUser.id) {
+          isMyProfile = false;
+          user = await apiFetch(`/users/${profileId}`);
+          try {
+            // This will fail until the backend endpoint exists, but the catch handles it
+            userPublications = await apiFetch(`/users/${profileId}/publications`);
+          } catch (e) {
+            console.warn(`Could not fetch publications for user ${profileId}.`);
+            userPublications = [];
+          }
+        } else {
+          isMyProfile = true;
+          user = loggedInUser;
+          userPublications = await apiFetch('/publications/mine');
+        }
+
+        originalUser = JSON.parse(JSON.stringify(user));
+        renderProfileInfo(user);
+        renderPublications(userPublications);
+        renderBio(user);
         renderAllLists();
 
-        // PUBLICATIONS LOGIC
-        const showPublicationModal = () => {
-          document.getElementById('pub-year').value = new Date().getFullYear();
-
-          // Always get a fresh reference inside the function to be safe
-          const modal = document.getElementById('publication-modal');
-          if (modal) {
-            modal.style.display = 'flex';
-            setTimeout(() => {
-              modal.style.opacity = '1';
-              modal.querySelector('.modal-content').style.transform = 'scale(1)';
-            }, 10);
-          }
-        };
-
-        const hidePublicationModal = () => {
-          const modal = document.getElementById('publication-modal');
-          const form = document.getElementById('publication-form');
-          if (modal && form) {
-            modal.style.opacity = '0';
-            modal.querySelector('.modal-content').style.transform = 'scale(0.95)';
-            setTimeout(() => {
-              modal.style.display = 'none';
-              form.reset();
-            }, 300);
-          }
-        };
-
-        addPubBtn.addEventListener('click', showPublicationModal);
-        cancelPubBtn.addEventListener('click', hidePublicationModal);
-
-        pubForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const pubData = {
-            title: document.getElementById('pub-title').value,
-            year: parseInt(document.getElementById('pub-year').value) || null,
-            venue: document.getElementById('pub-venue').value,
-            abstract: document.getElementById('pub-abstract').value,
-          };
-          const response = await fetch('http://localhost:3001/publications', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-            body: JSON.stringify(pubData)
+        // --- SETUP EVENT LISTENERS (ONLY IF IT'S MY PROFILE) ---
+        if (isMyProfile) {
+          mainEditBtn.addEventListener('click', () => { originalUser = JSON.parse(JSON.stringify(user)); toggleEditMode(true); });
+          cancelProfileBtn.addEventListener('click', () => { user = JSON.parse(JSON.stringify(originalUser)); toggleEditMode(false); });
+          saveProfileBtn.addEventListener('click', async () => {
+            const dataToSave = { bio: user.bio, skills: user.skills, recentActivity: user.recentActivity, collaborators: user.collaborators, activeProjects: user.activeProjects, achievements: user.achievements };
+            try {
+              const response = await apiFetch('/profile/me', { method: 'PATCH', body: JSON.stringify(dataToSave) });
+              user = response;
+              originalUser = JSON.parse(JSON.stringify(user));
+              toggleEditMode(false);
+              alert('Profile saved successfully!');
+            } catch (error) {
+              alert('Could not save profile.'); console.error(error);
+            }
           });
-          if (!response.ok) return alert('Failed to save publication.');
-
-          const newPublications = await fetchUserPublications();
-          renderPublications(newPublications);
-          hidePublicationModal();
-        });
-
+          const hideBioForm = () => { editBioForm.style.display = 'none'; bioTextEl.style.display = 'block'; editBioBtn.parentElement.style.display = 'block'; };
+          editBioBtn.addEventListener('click', () => { editBioForm.style.display = 'block'; bioTextEl.style.display = 'none'; editBioBtn.parentElement.style.display = 'none'; bioTextarea.value = user.bio || ''; bioTextarea.focus(); });
+          cancelBioBtn.addEventListener('click', () => { renderBio(user); hideBioForm(); });
+          saveBioBtn.addEventListener('click', () => { user.bio = bioTextarea.value; renderBio(user); hideBioForm(); });
+          document.querySelectorAll('.add-list-item-btn').forEach(button => {
+            const listKey = button.dataset.list;
+            const inputId = button.dataset.input;
+            const inputEl = document.getElementById(inputId);
+            const addItem = () => { const newItem = inputEl.value.trim(); if (newItem && !(user[listKey] || []).includes(newItem)) { user[listKey] = [...(user[listKey] || []), newItem]; renderAllLists(); inputEl.value = ''; } };
+            button.addEventListener('click', addItem);
+            inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); addItem(); } });
+          });
+          let editingPublicationId = null;
+          let selectedClassifications = [];
+          const allClassifications = ['Artificial Intelligence', 'Robotics', 'Computer Science', 'Machine Learning', 'Data Science', 'Quantum Computing', 'Bioinformatics', 'Medicine', 'Physics', 'Chemistry', 'Mathematics', 'Engineering', 'Economics', 'Sociology'];
+          const renderClassificationTags = () => { tagsContainer.querySelectorAll('.tag').forEach(tagEl => tagEl.remove()); selectedClassifications.forEach(tag => { const tagEl = document.createElement('div'); tagEl.className = 'tag'; tagEl.innerHTML = `<span>${tag}</span><button type="button" class="remove-tag">&times;</button>`; tagEl.querySelector('.remove-tag').onclick = () => { selectedClassifications = selectedClassifications.filter(t => t !== tag); renderClassificationTags(); }; tagsContainer.insertBefore(tagEl, classificationInput); }); };
+          const addClassificationTag = (tag) => { if (tag && !selectedClassifications.includes(tag)) { selectedClassifications.push(tag); renderClassificationTags(); } classificationInput.value = ''; suggestionsPanel.style.display = 'none'; };
+          classificationInput.addEventListener('input', () => { const query = classificationInput.value.toLowerCase(); suggestionsPanel.innerHTML = ''; if (query.length > 0) { const filtered = allClassifications.filter(c => c.toLowerCase().includes(query) && !selectedClassifications.includes(c)); if (filtered.length > 0) { filtered.forEach(item => { const div = document.createElement('div'); div.className = 'suggestion-item'; div.textContent = item; div.onclick = () => addClassificationTag(item); suggestionsPanel.appendChild(div); }); suggestionsPanel.style.display = 'block'; } else { suggestionsPanel.style.display = 'none'; } } else { suggestionsPanel.style.display = 'none'; } });
+          classificationInput.addEventListener('keydown', (e) => { if (e.key === 'Enter' && classificationInput.value) { e.preventDefault(); addClassificationTag(classificationInput.value); } });
+          const showPublicationModal = () => { pubModal.style.display = 'flex'; setTimeout(() => { pubModal.style.opacity = '1'; pubModal.querySelector('.modal-content').style.transform = 'scale(1)'; }, 10); };
+          const hidePublicationModal = () => { pubModal.style.opacity = '0'; pubModal.querySelector('.modal-content').style.transform = 'scale(0.95)'; setTimeout(() => { pubModal.style.display = 'none'; pubForm.reset(); selectedClassifications = []; renderClassificationTags(); }, 300); };
+          const openAddModal = () => { editingPublicationId = null; pubModalTitle.textContent = 'Add New Publication'; pubForm.reset(); selectedClassifications = []; renderClassificationTags(); pubYearInput.value = new Date().getFullYear(); showPublicationModal(); };
+          const openEditModal = (pubId) => { editingPublicationId = pubId; const pub = userPublications.find(p => p.id === pubId); if (!pub) return; pubModalTitle.textContent = 'Edit Publication'; pubIdInput.value = pub.id; pubTitleInput.value = pub.title; pubYearInput.value = pub.year; pubVenueInput.value = pub.venue; pubAbstractInput.value = pub.abstract; selectedClassifications = [...(pub.classifications || [])]; renderClassificationTags(); showPublicationModal(); };
+          publicationsFeedEl.addEventListener('click', (event) => { const btn = event.target.closest('.edit-pub-btn'); if (btn) openEditModal(btn.dataset.pubId); });
+          addPubBtn.addEventListener('click', openAddModal);
+          cancelPubBtn.addEventListener('click', hidePublicationModal);
+          pubForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const pubData = { title: pubTitleInput.value, year: parseInt(pubYearInput.value) || null, venue: pubVenueInput.value, abstract: pubAbstractInput.value, classifications: selectedClassifications };
+            const method = editingPublicationId ? 'PATCH' : 'POST';
+            const url = editingPublicationId ? `/publications/${editingPublicationId}` : '/publications';
+            try {
+              await apiFetch(url, { method, body: JSON.stringify(pubData) });
+              hidePublicationModal();
+              await refreshPublications();
+            } catch (error) {
+              alert('Could not save publication.');
+            }
+          });
+        } else {
+          mainEditBtn.innerHTML = '✉️ Send Message';
+          mainEditBtn.onclick = () => alert(`Messaging feature for ${user.firstName} is coming soon!`);
+          saveProfileBtn.style.display = 'none';
+          cancelProfileBtn.style.display = 'none';
+        }
       } catch (error) {
         console.error('Failed to load profile:', error);
-        alert('Session expired or failed to load data. Please log in again.');
-        window.location.href = 'login.html';
+        alert('Could not load profile. It may not exist or there was an error.');
+        window.location.href = 'home.html';
       }
     });
 
-    // --- LOGOUT MODAL LOGIC (can stay outside) ---
+    // --- LOGOUT MODAL LOGIC ---
     const logoutButton = document.getElementById('logout-button');
     const logoutModal = document.getElementById('logout-modal');
     const cancelLogoutButton = document.getElementById('cancel-logout');
     const confirmLogoutButton = document.getElementById('confirm-logout');
-
-    logoutButton.addEventListener('click', () => {
-      logoutModal.style.display = 'flex';
-      setTimeout(() => {
-        logoutModal.style.opacity = '1';
-        logoutModal.querySelector('.modal-content').style.transform = 'scale(1)';
-      }, 10);
-    });
-
-    const hideModal = () => {
-      logoutModal.style.opacity = '0';
-      logoutModal.querySelector('.modal-content').style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        logoutModal.style.display = 'none';
-      }, 300);
-    };
-
+    logoutButton.addEventListener('click', () => { logoutModal.style.display = 'flex'; setTimeout(() => { logoutModal.style.opacity = '1'; logoutModal.querySelector('.modal-content').style.transform = 'scale(1)'; }, 10); });
+    const hideModal = () => { logoutModal.style.opacity = '0'; logoutModal.querySelector('.modal-content').style.transform = 'scale(0.95)'; setTimeout(() => { logoutModal.style.display = 'none'; }, 300); };
     cancelLogoutButton.addEventListener('click', hideModal);
-
-    confirmLogoutButton.addEventListener('click', () => {
-      localStorage.removeItem('access_token');
-      window.location.href = 'index.html';
-    });
-
-    logoutModal.addEventListener('click', (event) => {
-      if (event.target === logoutModal) {
-        hideModal();
-      }
-    });
+    confirmLogoutButton.addEventListener('click', () => { localStorage.removeItem('access_token'); window.location.href = 'index.html'; });
+    logoutModal.addEventListener('click', (event) => { if (event.target === logoutModal) { hideModal(); } });
   </script>
 </body>
 
